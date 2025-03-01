@@ -1,49 +1,29 @@
-<nav>
-    <div class="hidden-links-menu">
-      <button class="icon-button" (click)="toggleMenu()">
-        <i class="fas fa-bars"></i> <!-- Font Awesome menu icon -->
-      </button>
-      <div *ngIf="menuOpen" class="menu">
-        <a aria-label="Home button" routerLink="">Home</a>
-        <a aria-label="Products button" routerLink="/products">Products</a>
-        <a aria-label="Sale button" routerLink="/sale">Sale</a>
-        <a aria-label="About us button" routerLink="/about-us">About us</a>
-      </div>
-    </div>
-    <div class="links">
-      <a routerLink="" class="active">Home</a>
-      <a routerLink="/products">Products</a>
-      <a routerLink="/sale">Sale</a>
-      <a routerLink="/about-us">About us</a>
-    </div>
-    <div class="logo" routerLink="">
-      <div class="logo-name">
-        <div>Cute</div>
-        <div>name <3</div>
-      </div>
-    </div>
-    <div class="icons">
-      <a routerLink="/cart" class="icon-button">
-        <i class="fas fa-shopping-cart"></i> <!-- Font Awesome cart icon -->
-        <span *ngIf="isLoggedIn$ | async">{{ cart.countItems() }}</span>
-      </a>
-      <div class="profile-menu">
-        <button class="icon-button" (click)="toggleProfileMenu()">
-          <i class="fas fa-user-circle"></i> <!-- Font Awesome user icon -->
-        </button>
-        <div *ngIf="profileMenuOpen" class="menu">
-          <a *ngIf="isLoggedIn$ | async" [routerLink]="['/profile', { outlets: { profile: ['info'] } }]">
-            <i class="fas fa-id-badge"></i> Profile
-          </a>
-          <a *ngIf="isLoggedIn$ | async" (click)="onLogout()">
-            <i class="fas fa-sign-out-alt"></i> Logout
-          </a>
-          <a *ngIf="isLoggedOut$ | async" routerLink="/login">
-            <i class="fas fa-sign-in-alt"></i> Login
-          </a>
-        </div>
-      </div>
-    </div>
-  </nav>
-  <hr />
-  
+<nav class="navbar">
+  <div class="navbar__logo">
+    <!-- Replace 'logo.png' with your actual logo file -->
+    <img src="assets/logo.png" alt="Company Logo" />
+  </div>
+  <ul class="navbar__links">
+    <li><a routerLink="/" routerLinkActive="active">Home</a></li>
+    <li><a routerLink="/products" routerLinkActive="active">Products</a></li>
+    <li><a routerLink="/about" routerLinkActive="active">About Us</a></li>
+    <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+  </ul>
+  <div class="navbar__social-media">
+    <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.twitter.com" target="_blank" aria-label="Twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+  </div>
+  <button class="navbar__toggle" aria-label="Toggle navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+</nav>

@@ -5,15 +5,18 @@ import { select, Store } from '@ngrx/store';
 import { isLoggedIn, isLoggedOut } from '../auth/state/auth.selector';
 import { Observable } from 'rxjs';
 import { logout } from '../auth/state/auth.actions';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-nav',
-  templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss'],
+  imports: [CommonModule],
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavComponent implements OnInit {
   isLoggedIn$!: Observable<boolean>;
   isLoggedOut$!: Observable<boolean>;
+  isMenuOpen = false;
 
   constructor(
     private store: Store<AuthState>,
@@ -27,5 +30,8 @@ export class NavComponent implements OnInit {
 
   onLogout() {
     this.store.dispatch(logout());
+  }
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }

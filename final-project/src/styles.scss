@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import './styles/colors';
+@import './styles/buttons';
+@import './styles/typography';
+
+html {
+  scroll-behavior: smooth;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+    margin: 0;
+    font-family: 'DM Sans', 'Inter', sans-serif;
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+  }
+  
