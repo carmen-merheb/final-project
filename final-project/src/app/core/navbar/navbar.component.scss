@@ -1,76 +1,84 @@
 .navbar {
-  background-color: #2a2a72;
-  color: #ffffff;
-  padding: 1rem 10%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  position: relative;
+  align-items: center;
+  padding: 1rem 5%;
+  background: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 
-  &__logo img {
-    height: 50px;
+  .nav-left {
+    display: flex;
+    align-items: center;
+    
+    .logo {
+      height: 50px; 
+      margin-right: 1rem;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      
+      li {
+        a {
+          text-decoration: none;
+          font-size: 1.1rem;
+          color: #333;
+          font-weight: 600;
+          transition: color 0.3s;
+          
+          &:hover {
+            color: var(--accent-color);
+          }
+        }
+      }
+    }
   }
 
-  &__links {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
+  .nav-center {
+    .shop-name {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #222;
+    }
+  }
 
-    li a {
-      color: wheat;
-      text-decoration: none;
-      font-size: 1.2rem;
+  .nav-right {
+    display: flex;
+    gap: 1rem;
+    
+    a {
+      font-size: 1.5rem;
+      color: #333;
       transition: color 0.3s;
 
       &:hover {
-        color: #ffeb99;
+        color: var(--accent-color);
       }
     }
-  }
-
-  &__social-media {
-    display: flex;
-    gap: 1rem;
-
-    a {
-      color: #ffcc00;
-      font-size: 1.5rem;
-      transition: transform 0.3s;
-
-      &:hover {
-        transform: scale(1.2);
-      }
-    }
-  }
-
-  &__toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: #ffcc00;
-    font-size: 1.5rem;
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   .navbar {
     flex-direction: column;
-    align-items: flex-start;
+    text-align: center;
+    padding: 1rem;
 
-    &__links {
+    .nav-left {
       flex-direction: column;
-      width: 100%;
-      display: none;
+
+      .nav-links {
+        margin-top: 1rem;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
     }
 
-    &__social-media {
+    .nav-right {
       margin-top: 1rem;
-    }
-
-    &__toggle {
-      display: block;
     }
   }
 }
