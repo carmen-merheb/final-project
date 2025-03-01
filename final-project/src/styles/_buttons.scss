@@ -1,0 +1,46 @@
+@mixin button-default($width, $height, $withborder: 0) {
+    width: $width;
+    height: $height;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-color);
+    border-radius: 8px;
+    font-family: 'Lexend Tera', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition:
+      background 0.3s ease,
+      transform 0.2s ease,
+      box-shadow 0.3s ease;
+  
+    @if $withborder==1 {
+      border: 2px solid var(--border-color);
+    }
+  
+    &:hover {
+      background: linear-gradient(135deg, var(--btn-hover-color), var(--secondary-hover-color));
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    }
+  
+    &:active {
+      background: var(--primary-color);
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+  
+    &:disabled {
+      background: var(--disabled-bg);
+      color: var(--disabled-text);
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  }
+  
