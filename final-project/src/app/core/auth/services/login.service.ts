@@ -11,17 +11,17 @@ export class UserAuthService {
   constructor(private http: HttpClient) {}
 
   login(req: ILoginRequest): Observable<ILoginResponse> {
-    const loginURL = environment.loginURL; // No need for extra path
+    const loginURL = environment.loginURL; 
     return this.http.post<ILoginResponse>(loginURL, req).pipe(
       tap((response) => {
         console.log('API Response:', response);
-        localStorage.setItem('user', JSON.stringify(response)); // Store user session
+        localStorage.setItem('user', JSON.stringify(response));
       })
     );
   }
 
   logout() {
-    localStorage.removeItem('user'); // Clear session
+    localStorage.removeItem('user'); 
   }
 
   isAuthenticated(): boolean {

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ISignUpRequest, ISignUpResponse } from '../models/auth.model';
 import { Observable, of } from 'rxjs';
-import { GenerateUserIdService } from '../services/generate-user-id.service'; // Import the hashing service
+import { GenerateUserIdService } from '../services/generate-user-id.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,16 +10,16 @@ import { GenerateUserIdService } from '../services/generate-user-id.service'; //
 export class SignupService {
   constructor(
     private http: HttpClient,
-    private userIdService: GenerateUserIdService // Inject hashing service
+    private userIdService: GenerateUserIdService 
   ) {}
 
   signup(req: ISignUpRequest): Observable<ISignUpResponse> {
-    const hashedUserId = this.userIdService.stringToHash(req.Email).toString(); // Generate a numeric hash for user ID
+    const hashedUserId = this.userIdService.stringToHash(req.Email).toString();
 
     const mockUser: ISignUpResponse = {
-      id: hashedUserId, // Use the hashed ID
+      id: hashedUserId, 
       createdTimestamp: Date.now(),
-      username: req.Email, // Keeping email as username
+      username: req.Email, 
       enabled: true,
       totp: false,
       emailVerified: true,
@@ -39,10 +39,9 @@ export class SignupService {
       attributes: null,
     };
 
-    // Save the user as a mock signup (for testing purposes)
     localStorage.setItem('mockUser', JSON.stringify(mockUser));
 
-    return of(mockUser); // Returning an Observable with the mock user
+    return of(mockUser);
   }
 
   getMockUser(): ISignUpResponse | null {

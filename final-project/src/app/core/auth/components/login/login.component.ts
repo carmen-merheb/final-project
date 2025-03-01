@@ -1,19 +1,21 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { UserAuthService } from '../../services/login.service';
-import { ILoginRequest } from '../../models/auth.model';
+import { ILoginRequest, ILoginResponse } from '../../models/auth.model';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { login } from '../../state/auth.actions';
-import { catchError, Observable, throwError } from 'rxjs';
 import { AuthState } from '../../state/auth.reducers';
-import { tap, noop } from 'rxjs';
 import { GenerateUserIdService } from '../../services/generate-user-id.service';
+import { CommonModule } from '@angular/common';
+import { firstValueFrom } from 'rxjs'; 
 
 @Component({
   selector: 'app-login',
+  standalone: true,
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  styleUrls: ['./login.component.scss'],
+  imports: [ReactiveFormsModule, CommonModule],
 })
 export class LoginComponent {
   loginForm: FormGroup;
@@ -32,39 +34,43 @@ export class LoginComponent {
     });
   }
 
-  onSubmit() {
+  async onSubmit() {
+    if (this.loginForm.invalid) return;
+
     const val: ILoginRequest = this.loginForm.value;
     console.log(val);
-    this.auth
-      .login(val)
-      .pipe(
-        tap((user) => {
-          this.store.dispatch(
-            login({
-              email: val.username,
-              token: user.Login.AccessToken,
-              userId: this.generateID.stringToHash(val.username),
-            })
-          );
-          this.router.navigate(['']);
 
-          this.isLoginFail = false;
-        }),
-        catchError((err) => {
-          console.error('Login error:', err);
-          alert('Login Failed');
-          this.isLoginFail = true;
-          return throwError(err);
+    try {
+      // Convert Observable to Promise safely
+      const user: ILoginResponse | undefined = await firstValueFrom(this.auth.login(val));
+
+      if (!user || !user.Login?.AccessToken) {
+        throw new Error('Invalid login response');
+      }
+
+      const hashedUserId = await this.generateID.stringToHash(val.username);
+
+      this.store.dispatch(
+        login({
+          email: val.username,
+          token: user.Login.AccessToken,
+          userId: hashedUserId,
         })
-      )
-      .subscribe({
-        error: (err) => console.error('Subscription error:', err),
-      });
+      );
+
+      this.router.navigate(['']);
+      this.isLoginFail = false;
+    } catch (err) {
+      console.error('Login error:', err);
+      alert('Login Failed');
+      this.isLoginFail = true;
+    }
   }
 
   get username() {
     return this.loginForm.get('username');
   }
+
   get password() {
     return this.loginForm.get('password');
   }
