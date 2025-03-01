@@ -8,8 +8,8 @@ import { logout } from '../auth/state/auth.actions';
 
 @Component({
   selector: 'app-nav',
-  templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss'],
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavComponent implements OnInit {
   isLoggedIn$!: Observable<boolean>;
