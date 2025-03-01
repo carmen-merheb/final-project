@@ -41,7 +41,6 @@ export class LoginComponent {
     console.log(val);
 
     try {
-      // Convert Observable to Promise safely
       const user: ILoginResponse | undefined = await firstValueFrom(this.auth.login(val));
 
       if (!user || !user.Login?.AccessToken) {
@@ -74,4 +73,14 @@ export class LoginComponent {
   get password() {
     return this.loginForm.get('password');
   }
+
+  debugClick() {
+    console.log('Signup link clicked! Navigating...');
+    this.router.navigate(['/signup']).then(() => {
+      console.log('Navigation to signup successful!');
+    }).catch(err => {
+      console.error('Navigation failed:', err);
+    });
+  }
+  
 }

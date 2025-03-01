@@ -5,7 +5,7 @@
         <label for="email">Email: </label>
         <input
           type="text"
-          id="email"
+          id="loginEmail"
           formControlName="username"
           placeholder="Email or Username"
           required
@@ -23,7 +23,7 @@
         <label for="password">Password: </label>
         <input
           type="password"
-          id="password"
+          id="loginPassword"
           formControlName="password"
           placeholder="********"
           required
@@ -51,5 +51,8 @@
         <button type="submit" [disabled]="loginForm.invalid">Login</button>
       </div>
     </form>
-    <p>Do not have an account? <a routerLink="/signup">Sign Up here</a></p>
+    <p>Don't have an account?
+      <a routerLink="/signup" (click)="debugClick()">Sign up here</a>
+    </p>
+    
   </div>

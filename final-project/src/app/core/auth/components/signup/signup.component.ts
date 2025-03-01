@@ -64,4 +64,13 @@ export class SignupComponent implements OnInit {
   get password() {
     return this.signupForm.get('password');
   }
+
+  goToLogin() {
+    console.log('Navigating to login...');
+    this.router.navigate(['/login']).then(() => {
+      console.log('Navigation to login successful!');
+    }).catch(err => {
+      console.error('Navigation failed:', err);
+    });
+  }
 }

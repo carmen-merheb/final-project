@@ -2,12 +2,11 @@
     <h1>Signup</h1>
     <form [formGroup]="signupForm">
       <div class="form-control">
-        <label for="fName">First Name: </label>
+        <label for="firstName">First Name: </label>
         <input
           type="text"
-          id="fName"
+          id="firstName"
           formControlName="firstName"
-          placeholder="John"
           required
         />
         <div>
@@ -22,12 +21,11 @@
       </div>
   
       <div class="form-control">
-        <label for="lName">Last Name: </label>
+        <label for="lastName">Last Name: </label>
         <input
           type="text"
-          id="lName"
+          id="lastName"
           formControlName="lastName"
-          placeholder="Smith"
           required
         />
         <div>
@@ -43,7 +41,7 @@
         <label for="email">Email: </label>
         <input
           type="text"
-          id="email"
+          id="emailAddress"
           formControlName="email"
           placeholder="Email"
           required
@@ -68,7 +66,7 @@
         <label for="password">Password: </label>
         <input
           type="password"
-          id="password"
+          id="userPassword"
           formControlName="password"
           placeholder="********"
           required
@@ -108,6 +106,9 @@
         </button>
       </div>
     </form>
-    <p>Already have an account? <a routerLink="/login"> Login here</a></p>
+    <p>Already have an account?
+        <a routerLink="/login" (click)="goToLogin()">Login here</a>
+      </p>
+
   </div>
   
