@@ -10,8 +10,14 @@ import { CartPageComponent } from './features/cart/components/cart-page/cart-pag
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', component: LoginComponent },
-  { path: 'signup', component: SignupComponent }, 
+  { path: 'signup', component: SignupComponent },
+  {
+    path: 'profile',
+    loadChildren: () =>
+      import('./features/profile/profile-routing.module').then(
+        (m) => m.ProfileRoutingModule
+      ),
+  },
   {
     path: 'products',
     component: ProductsComponent,
