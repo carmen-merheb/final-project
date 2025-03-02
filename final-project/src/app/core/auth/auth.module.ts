@@ -20,7 +20,6 @@ import { AuthinterceptorsService } from './services/auth-interceptors.service';
 import { tokenInterceptor } from './services/token.interceptor';
 
 @NgModule({
-  declarations: [LoginComponent, SignupComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,

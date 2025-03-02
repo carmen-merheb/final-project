@@ -1,0 +1,65 @@
+<div class="cart-header">
+  <h1 class="title">My Cart</h1>
+  <hr>
+</div>
+
+<div class="cart-page">
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      @for (item of cartService.cartItems(); track item; let i = $index) {
+        <tr>
+          <td>
+            <div class="single-product-info">
+              <div class="image-container">
+                <img [src]="item.product.image" alt="{{ item.product.title }}">
+              </div>
+              <div>
+                <p class="product-title">{{ item.product.title }}</p>
+                <small class="product-price">{{ item.product.price | currency: 'USD' }}</small>
+                <button class="delete-btn" (click)="onRemove(i)">🗑</button>
+              </div>
+            </div>
+          </td>
+
+          <td>
+            <div class="product-quantity">
+              <button class="quantity-btn" (click)="onDec(i)">−</button>
+              <input 
+                type="number" 
+                [(ngModel)]="item.quantity"
+                (ngModelChange)="onInputQuantity(i, item.quantity)" 
+                min="1" 
+                class="quantity-input"
+              />
+              <button class="quantity-btn" (click)="onInc(i)">+</button>
+            </div>
+          </td>
+
+          <td class="subtotal-price">
+            {{ item.product.price * item.quantity | currency: 'USD' }}
+          </td>
+        </tr>
+      }
+
+      <tr class="cart-summary">
+        <td colspan="2">Total Items: {{ cartService.countItems() }}</td>
+        <td>{{ cartService.totalPrice() | currency }}</td>
+      </tr>
+
+      <tr class="checkout">
+        <td colspan="2"></td>
+        <td>
+          <button class="checkout-btn" (click)="onOrder()">Checkout</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

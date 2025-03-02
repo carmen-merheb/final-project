@@ -1,2 +1,5 @@
 <div class="product-list">
-</div>
+    @for (item of newItems; track item) {
+      <app-card class="product" [productData]="item"></app-card>
+    }
+  </div>

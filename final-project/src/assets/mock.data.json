@@ -1,0 +1,39 @@
+[
+    {
+      "id": 21,
+      "title": "Super Soft Teddy Bear Hoodie",
+      "price": 14.99,
+      "description": "A cozy and adorable teddy bear hoodie made from soft cotton to keep your little one warm and cute all day long.",
+      "category": "children's clothing",
+      "image": "/assets/IMG_1.jpg",
+      "rating": {
+        "rate": 4.2,
+        "count": 150
+      }
+    },
+    {
+      "id": 22,
+      "title": "Rainbow Stripes Dress",
+      "price": 19.99,
+      "description": "A fun and colorful dress featuring rainbow stripes, perfect for playtime or special occasions. Made with breathable fabric for all-day comfort.",
+      "category": "children's clothing",
+      "image": "/assets/IMG_2.jpg",
+      "rating": {
+        "rate": 3.9,
+        "count": 270
+      }
+    },
+    {
+      "id": 23,
+      "title": "Adventure Ready Cargo Shorts",
+      "price": 6.5,
+      "description": "Durable cargo shorts for your little explorer. Perfect for outdoor adventures with plenty of pockets for storing treasures.",
+      "category": "children's clothing",
+      "image": "/assets/IMG_3.jpg",
+      "rating": {
+        "rate": 4.6,
+        "count": 410
+      }
+    }
+  ]
+  
