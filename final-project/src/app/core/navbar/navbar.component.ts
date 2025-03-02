@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthState } from '../auth/state/auth.reducers';
 import { select, Store } from '@ngrx/store';
-//import { CartService } from '../../../features/cart/services/cart.service';
 import { isLoggedIn, isLoggedOut } from '../auth/state/auth.selector';
 import { Observable } from 'rxjs';
 import { logout } from '../auth/state/auth.actions';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../../features/cart/services/cart.service';
+import { CartPageComponent } from '../../features/cart/components/cart-page/cart-page.component';
 
 @Component({
   selector: 'app-nav',
-  imports: [CommonModule],
+  imports: [CommonModule, CartPageComponent],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
@@ -20,7 +21,7 @@ export class NavComponent implements OnInit {
 
   constructor(
     private store: Store<AuthState>,
-    //public cart: CartService
+    public cart: CartService
   ) {}
 
   ngOnInit(): void {

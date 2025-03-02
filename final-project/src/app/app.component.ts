@@ -7,11 +7,13 @@ import { NavComponent } from './core/navbar/navbar.component';
 import { HomeComponent } from './features/homepage/home/home.component';
 import { CategoriesComponent } from './features/homepage/categories/categories.component';
 import { CommonModule } from '@angular/common';
+import { CartPageComponent } from './features/cart/components/cart-page/cart-page.component';
+import { CartComponent } from './features/cart/components/cart/cart.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, LoginComponent, SignupComponent, RouterOutlet, FooterComponent, NavComponent, HomeComponent, CategoriesComponent],
+  imports: [CommonModule, LoginComponent, SignupComponent, RouterOutlet, FooterComponent, NavComponent, HomeComponent, CategoriesComponent, CartPageComponent, CartComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

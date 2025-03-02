@@ -1,7 +1,15 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+
 /* You can add global styles to this file, and also import other style files */
 
 @import './styles/colors';
 @import './styles/buttons';
+@import './styles/mat_override';
 @import './styles/typography';
 
 html {
