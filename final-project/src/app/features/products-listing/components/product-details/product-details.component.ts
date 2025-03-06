@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { CardComponent } from '../../../../shared/components/card/card.component';
 import { MatDivider, MatDividerModule } from '@angular/material/divider';
+import { NewProductsService } from '../../services/new-products.service';
 
 @Component({
   selector: 'app-product-details',
@@ -27,6 +28,7 @@ export class ProductDetailsComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private productsService: ProductsApiService,
     private cartService: CartService,
+    private i: NewProductsService,
     private categoryService: CategoriesService,
     private router: Router
   ) {}
@@ -60,6 +62,29 @@ export class ProductDetailsComponent implements OnInit {
       );
     
   }
+
+  getNewProduct() {
+    this.i.getProductsById(Number(this.id)).subscribe({
+      next: (product) => {
+        if (product) {
+          this.product = product;
+          this.getRating(this.product.rating.rate);
+          // console.log('Found product:', product);
+
+          this.similarProducts$ = this.i
+            .getNewItems()
+            .pipe(
+              map((products) =>
+                products.filter((p) => p.id !== this.product.id)
+              )
+            );
+        } else {
+          console.log('Product not found.');
+        }
+      },
+    });
+  }
+
 
   getRating(rating: number) {
     if (rating % 1 !== 0) {

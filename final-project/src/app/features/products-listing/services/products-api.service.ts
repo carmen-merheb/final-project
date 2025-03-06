@@ -12,6 +12,12 @@ export class ProductsApiService {
   getAllProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${environment.apiURL}products`);
   }
+  getNewProducts(): Observable<[Product[], Product[]]> {
+    return forkJoin([
+      this.getAllProducts(),
+      this.http.get<Product[]>('assets/mock.data.json'),
+    ]);
+  }
   getProductById(id: number): Observable<Product> {
     return this.http.get<Product>(`${environment.apiURL}products/${id}`);
   }

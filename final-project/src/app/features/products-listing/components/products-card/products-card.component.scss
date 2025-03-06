@@ -12,6 +12,7 @@
   &:hover {
     cursor: pointer;
   }
+
   .new-tag {
     position: absolute;
     top: 25px;
@@ -19,14 +20,13 @@
     background-color: var(--accent-color);
     color: white;
     padding: 5px 15px;
-
     font-size: var(--font-small);
     font-weight: 700;
   }
 }
+
 .img-container img {
   width: 50%;
-
   padding: 0 5rem;
   object-fit: contain;
 }
@@ -39,7 +39,6 @@ h5 {
 
 .product-info {
   display: grid;
-
   grid-row: 1fr 1fr;
   width: 100%;
   height: 130px;
@@ -60,4 +59,12 @@ h5 {
 .add {
   @include button-default(4rem, 2rem);
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  .icon {
+    font-size: 18px;
+    margin-right: 8px;
+  }
 }
