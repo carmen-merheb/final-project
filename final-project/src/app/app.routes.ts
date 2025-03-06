@@ -21,13 +21,11 @@ export const routes: Routes = [
   {
     path: 'products',
     component: ProductsComponent,
-    canActivate: [authGuard],
   },
 
   {
     path: 'products/details/:id',
-    component: ProductDetailsComponent,
-    canActivate: [authGuard],
+    component: ProductDetailsComponent
   },
   {
     path: 'login',

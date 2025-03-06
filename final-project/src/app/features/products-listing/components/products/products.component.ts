@@ -13,6 +13,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { CardComponent } from '../../../../shared/components/card/card.component';
 import { ProductsCardComponent } from '../products-card/products-card.component';
 import { FormsModule } from '@angular/forms';
+import { NewProductsService } from '../../services/new-products.service';
 
 @Component({
   selector: 'app-products',
@@ -42,22 +43,60 @@ export class ProductsComponent {
     private cat: CategoriesService,
     private sortService: SortService,
     private http: HttpClient,
+    private i: NewProductsService
   ) {}
 
+  ngOnInit(): void {
+    this.displayCategories();
+    forkJoin([
+      this.productsService.getAllProducts(),
+      this.i.getNewItems(),
+    ]).subscribe({
+      next: ([apiProducts, mockProducts]: [Product[], Product[]]) => {
+        this.originalProductList = [...apiProducts, ...mockProducts];
+        this.productList = this.originalProductList;
+        this.searchlist = this.productList;
+      },
 
+      error: (err: any) => {
+        alert(err.message);
+      },
+    });
+  }
 
-  onCategoryChange(value: string) {
+  displayCategories() {
+    this.cat.getAllCategories().subscribe({
+      next: (categories: string[]) => {
+        const newCategory = 'skincare';
+        this.categories = ['All', ...categories, newCategory];
+      },
+      error: (err: any) => {
+        alert(err.message);
+      },
+    });
+  }
+
+  onCategoryChange(event: Event) {
+    const value = (event.target as HTMLSelectElement).value;
+  
     if (value === 'All') {
-      if (this.searchValue === '') this.productList = this.originalProductList;
-      else {
+      if (this.searchValue === '') {
+        this.productList = this.originalProductList;
+      } else {
         this.productList = this.originalProductList.filter((product) =>
           product.title.toLowerCase().includes(this.searchValue.toLowerCase())
         );
       }
       this.sortService.sort(this.currentSort, this.productList);
-
       this.searchlist = [...this.originalProductList];
-  
+    } else if (value === 'skincare') {
+      this.i.getNewItems().subscribe((products: Product[]) => {
+        this.productList = products.filter((product) =>
+          product.title.toLowerCase().includes(this.searchValue.toLowerCase())
+        );
+        this.sortService.sort(this.currentSort, this.productList);
+        this.searchlist = [...products];
+      });
     } else {
       let productsByCategory: Product[];
       this.cat.getProductsByCategory(value).subscribe((res: Product[]) => {
@@ -67,19 +106,20 @@ export class ProductsComponent {
         );
         this.sortService.sort(this.currentSort, this.productList);
         this.searchlist = [...productsByCategory];
-
+  
         this.currentCategory = value;
       });
     }
   }
-
-  onSortChange(value: string) {
+  
+  onSortChange(event: Event) {
+    const value = (event.target as HTMLSelectElement).value;
+  
     this.currentSort = value;
-
     this.sortService.sort(this.currentSort, this.productList);
     this.searchlist = [...this.productList];
   }
-
+  
   onSearch() {
     if (this.searchValue !== '') {
       this.productList = this.searchlist.filter((product) =>

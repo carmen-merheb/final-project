@@ -9,7 +9,6 @@ import { IUserLog } from '../models/userLog.model';
   providedIn: 'root',
 })
 export class CartService {
-  ///
 
   constructor(private cartAPI: CartApiService) {
     const storedCart = localStorage.getItem('cart');
@@ -17,7 +16,6 @@ export class CartService {
       this.cartItems.set(JSON.parse(storedCart));
     }
 
-    //whenevr the signal changes, the cache updates
     effect(() => {
       const cartState = this.cartItems();
       localStorage.setItem('cart', JSON.stringify(cartState));
@@ -68,8 +66,6 @@ export class CartService {
     });
   }
   
-
-  //id in signal not id of product
   removeItem(id: number) {
     this.cartItems.update((currentCartItems) =>
       currentCartItems.filter((_, index) => index !== id)
