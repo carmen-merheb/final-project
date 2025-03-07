@@ -12,7 +12,7 @@ import { NewProductsService } from '../../products-listing/services/new-products
 export class NewProductsComponent {
   newItems!: Product[];
   constructor(private i: NewProductsService) {
-    this.i.getNewProducts().subscribe((products: Product[]) => {
+    this.i.getNewItems().subscribe((products: Product[]) => {
       this.newItems = products;
     });
   }

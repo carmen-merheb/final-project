@@ -1,68 +1,55 @@
 <div class="shop-header">
-    <h1 class="title">Shop</h1>
-  
-    <div class="products-action">
-      <div class="filter-sort">
-        <mat-form-field>
-          <mat-label>Filter</mat-label>
-          <mat-select (selectionChange)="onCategoryChange($event.value)">
-            @for (item of categories; track item) {
-              <mat-option [value]="item"> {{ item }}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-  
-        <mat-form-field>
-          <mat-label>Sort</mat-label>
-          <mat-select (selectionChange)="onSortChange($event.value)">
-            @for (item of sortOptions; track item) {
-              <mat-option [value]="item"> {{ item }}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
+  <h1 class="title">Shop</h1>
+
+  <div class="products-action">
+    <div class="filter-sort">
+      <div class="select-container">
+        <label for="categorySelect">Filter</label>
+        <select id="categorySelect" (change)="onCategoryChange($event)">
+          <option *ngFor="let item of categories" [value]="item">{{ item }}</option>
+        </select>
       </div>
-  
-      <mat-form-field class="search-form-field">
-        @if (!searchValue) {
-          <button
-            matSuffix
-            mat-icon-button
-            aria-label="Search"
-            (click)="onSearch()"
-          >
-            <mat-icon>search</mat-icon>
-          </button>
-        }
-        <input
-          matInput
-          type="text"
-          placeholder="Search"
-          [(ngModel)]="searchValue"
-          (input)="onSearch()"
-          (keyup.enter)="onSearch()"
-        />
-        @if (searchValue) {
-          <button
-            matSuffix
-            mat-icon-button
-            aria-label="Clear"
-            (click)="onClear()"
-          >
-            <mat-icon>close</mat-icon>
-          </button>
-        }
-      </mat-form-field>
+
+      <div class="select-container">
+        <label for="sortSelect">Sort</label>
+        <select id="sortSelect" (change)="onSortChange($event)">
+          <option *ngFor="let item of sortOptions" [value]="item">{{ item }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="search-form-field">
+      <button
+        *ngIf="!searchValue"
+        class="search-button"
+        aria-label="Search"
+        (click)="onSearch()"
+      >
+        <i class="search-icon">🔍</i>
+      </button>
+      <input
+        type="text"
+        placeholder="Search"
+        [(ngModel)]="searchValue"
+        (input)="onSearch()"
+        (keyup.enter)="onSearch()"
+      />
+      <button
+        *ngIf="searchValue"
+        class="clear-button"
+        aria-label="Clear"
+        (click)="onClear()"
+      >
+        <i class="clear-icon">❌</i>
+      </button>
     </div>
   </div>
-  
-  <div class="product-list">
-    <app-products-card
-      class="product"
-      *ngFor="let product of productList"
-      [productData]="product"
-    >
-    </app-products-card>
-  
-    <!-- } -->
-  </div>
-  
+</div>
+
+<div class="product-list">
+  <app-products-card
+    class="product"
+    *ngFor="let product of productList"
+    [productData]="product"
+  ></app-products-card>
+</div>

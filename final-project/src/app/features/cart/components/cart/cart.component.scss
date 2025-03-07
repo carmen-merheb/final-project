@@ -1,8 +1,7 @@
 
-/* 🔹 Table Container */
 .cart-page {
-  max-width: 900px; // Set a max width for better readability
-  margin: 0 auto; // Center align
+  max-width: 900px; 
+  margin: 0 auto; 
   max-height: 1200px;
   padding: 20px;
   background: #fff;
@@ -10,7 +9,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* 🔹 Table Layout */
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -19,29 +18,26 @@ table {
 }
 
 .image-container img {
-  width: 80px; // Set a fixed width
-  height: auto; // Maintain aspect ratio
-  object-fit: contain; // Prevent distortion
-  border-radius: 5px; // Slight rounding for better aesthetics
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Light shadow for depth
+  width: 80px; 
+  height: auto; 
+  object-fit: contain; 
+  border-radius: 5px; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
-
-/* 🔹 Cart Header */
 .cart-header {
   text-align: center;
   padding: 15px;
-  background-color: #f8f9fa;
+  background-color: white;
 }
 
-/* 🔹 Table Fixes */
 table {
   width: 100%;
   border-collapse: collapse;
 }
 
 th {
-  background-color: #ff9800; // Softer orange
+  background-color: #ffafcc; 
   color: white;
   text-align: left;
   padding: 10px;
@@ -52,21 +48,19 @@ td {
   border-bottom: 1px solid #ddd;
 }
 
-/* 🔹 Product Info */
 .single-product-info {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-/* 🔹 Fix Quantity Buttons */
 .product-quantity {
   display: flex;
   align-items: center;
   gap: 5px;
 
   .quantity-btn {
-    background-color: #ff9800;
+    background-color: #ffafcc;
     border: none;
     cursor: pointer;
     padding: 5px 10px;
@@ -75,7 +69,7 @@ td {
     transition: background 0.3s;
 
     &:hover {
-      background-color: darken(#ff9800, 10%);
+      background-color: darken(#ffafcc, 10%);
     }
   }
 
@@ -88,7 +82,6 @@ td {
   }
 }
 
-/* 🔹 Delete Button */
 .delete-btn {
   background: none;
   border: none;
@@ -96,9 +89,8 @@ td {
   font-size: 1.2rem;
 }
 
-/* 🔹 Checkout Button */
 .checkout-btn {
-  background-color: #ff3d00;
+  background-color: #ffafcc;
   color: white;
   border: none;
   padding: 12px 16px;
@@ -109,7 +101,7 @@ td {
   transition: background 0.3s;
 
   &:hover {
-    background-color: darken(#ff3d00, 10%);
+    background-color: darken(#ffafcc, 10%);
   }
 }
 

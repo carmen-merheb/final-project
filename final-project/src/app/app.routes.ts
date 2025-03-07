@@ -12,23 +12,31 @@ export const routes: Routes = [
 
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent }, 
-  { path: '**', redirectTo: 'signup' }, 
+
+  
+  { path: 'home', component: HomeComponent },
+  {
+    path: 'profile',
+    loadChildren: () =>
+      import('./features/profile/profile-routing.module').then(
+        (m) => m.ProfileRoutingModule
+      ),
+  },
+
   {
     path: 'products',
     component: ProductsComponent,
-    canActivate: [authGuard],
   },
 
   {
     path: 'products/details/:id',
-    component: ProductDetailsComponent,
-    canActivate: [authGuard],
+    component: ProductDetailsComponent
   },
   
   {
     path: 'cart', component: CartPageComponent
   },
-
+  
   { path: '', component: HomeComponent },
 
 ];

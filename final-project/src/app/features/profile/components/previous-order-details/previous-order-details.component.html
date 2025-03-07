@@ -1,0 +1,36 @@
+<table>
+    <tr>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+    </tr>
+    <!-- @if (productList$ && productList$.length > 0) { -->
+    @for (item of productList$ | async; track item) {
+      <tr>
+        <td>
+          <div class="image-container">
+            <img [src]="item.product.image" />
+          </div>
+        </td>
+        <td>
+          <div>
+              <small>{{ item.product.price | currency: 'USD' }}</small>
+            
+          </div>
+        </td>
+        <td>{{ item.quantity }}</td>
+        <td>
+            {{ item.product.price | currency: 'USD' }}
+          
+        </td>
+      </tr>
+    }
+    <tr>
+      <td></td>
+      <td></td>
+      <td class="footer">Totlal</td>
+      <td class="footer">{{ orderLog.totalPrice | currency: 'USD' }}</td>
+    </tr>
+  </table>
+  
