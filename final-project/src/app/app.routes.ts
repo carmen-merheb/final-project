@@ -10,11 +10,13 @@ import { CartPageComponent } from './features/cart/components/cart-page/cart-pag
 
 export const routes: Routes = [
 
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent }, 
-
-  
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'login', component: LoginComponent, pathMatch: 'full', canActivate: [authGuard] },
+  { path: 'signup', component: SignupComponent, pathMatch: 'full', canActivate: [authGuard] },
+  { path: 'products', component: ProductsComponent, pathMatch: 'full' },
+  { path: 'products/details/:id', component: ProductDetailsComponent, pathMatch: 'full' },
+  { path: 'cart', component: CartPageComponent, pathMatch: 'full' },
+  { path: 'home', component: HomeComponent, pathMatch: 'full' },
   {
     path: 'profile',
     loadChildren: () =>
@@ -22,21 +24,6 @@ export const routes: Routes = [
         (m) => m.ProfileRoutingModule
       ),
   },
-
-  {
-    path: 'products',
-    component: ProductsComponent,
-  },
-
-  {
-    path: 'products/details/:id',
-    component: ProductDetailsComponent
-  },
-  
-  {
-    path: 'cart', component: CartPageComponent
-  },
-  
-  { path: '', component: HomeComponent },
-
+  //{ path: 'checkout', component: CheckoutPageComponent, pathMatch: 'full' },
+  //{ path: 'admin', component: AdminPageComponent, pathMatch: 'full' },
 ];

@@ -40,7 +40,7 @@ export class LoginComponent {
     this.authApiService.login(newForm).pipe(
       tap(data => {
         this.auth.storeToken(data.accessToken, data.refreshToken);
-        this.router.navigate(['/']).then(() => {});
+        this.router.navigate(['/products']).then(() => {});
       }),
       catchError(error => {
         console.error('Login failed:', error);

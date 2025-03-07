@@ -5,7 +5,7 @@ import { catchError, switchMap, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { IToken } from '../models/auth.model';
 
-export const authInterceptor: HttpInterceptorFn = (req, next) => {
+export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
   const accessToken = authService.getAccessToken();
 

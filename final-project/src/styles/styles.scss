@@ -1,4 +1,7 @@
 @use '@angular/material' as mat;
+@use 'colors' as *;
+@use  'buttons' as *;
+@use 'typography' as *;
 @include mat.core();
 
 // Include theme styles for core and each component used in your app.
@@ -7,10 +10,12 @@
 
 /* You can add global styles to this file, and also import other style files */
 
-@import './styles/colors';
-@import './styles/buttons';
-@import './styles/mat_override';
-@import './styles/typography';
+@import './colors';
+@import './buttons';
+@import './mat_override';
+@import './typography';
+
+
 
 html {
   scroll-behavior: smooth;
