@@ -13,7 +13,7 @@ import { CartComponent } from './features/cart/components/cart/cart.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, LoginComponent, SignupComponent, RouterOutlet, FooterComponent, NavComponent, HomeComponent, CategoriesComponent, CartPageComponent, CartComponent],
+  imports: [CommonModule, SignupComponent, RouterOutlet, FooterComponent, NavComponent, HomeComponent, CategoriesComponent, CartPageComponent, CartComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

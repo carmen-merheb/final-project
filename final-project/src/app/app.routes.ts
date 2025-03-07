@@ -11,6 +11,7 @@ import { CartPageComponent } from './features/cart/components/cart-page/cart-pag
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'home', component: HomeComponent },
   {
     path: 'profile',
     loadChildren: () =>
@@ -36,5 +37,5 @@ export const routes: Routes = [
     path: 'cart', component: CartPageComponent
   },
 
-  { path: '', component: HomeComponent },
+  { path: '', component: LoginComponent },
 ];

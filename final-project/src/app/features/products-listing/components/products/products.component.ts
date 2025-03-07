@@ -53,7 +53,7 @@ export class ProductsComponent {
       this.i.getNewItems(),
     ]).subscribe({
       next: ([apiProducts, mockProducts]: [Product[], Product[]]) => {
-        this.originalProductList = [...apiProducts, ...mockProducts];
+        this.originalProductList = [...mockProducts, ...apiProducts];
         this.productList = this.originalProductList;
         this.searchlist = this.productList;
       },
