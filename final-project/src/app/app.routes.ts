@@ -5,5 +5,5 @@ import { SignupComponent } from './core/auth/components/signup/signup.component'
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: '**', redirectTo: 'login' }, 
+  { path: '**', redirectTo: 'signup' }, 
 ];
