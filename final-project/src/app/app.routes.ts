@@ -9,10 +9,10 @@ import { CartComponent } from './features/cart/components/cart/cart.component';
 import { CartPageComponent } from './features/cart/components/cart-page/cart-page.component';
 
 export const routes: Routes = [
+
   { path: 'login', component: LoginComponent },
-<<<<<<< HEAD
-  { path: '', component: LoginComponent },
   { path: 'signup', component: SignupComponent }, 
+  { path: '**', redirectTo: 'signup' }, 
   {
     path: 'products',
     component: ProductsComponent,
@@ -24,18 +24,11 @@ export const routes: Routes = [
     component: ProductDetailsComponent,
     canActivate: [authGuard],
   },
-  {
-    path: 'login',
-    loadChildren: () =>
-      import('./core/auth/auth.module').then((m) => m.AuthModule),
-  },
+  
   {
     path: 'cart', component: CartPageComponent
   },
 
   { path: '', component: HomeComponent },
-=======
-  { path: 'signup', component: SignupComponent },
-  { path: '**', redirectTo: 'signup' }, 
->>>>>>> feature/auth
+
 ];
