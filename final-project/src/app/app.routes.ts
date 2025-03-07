@@ -10,6 +10,7 @@ import { CartPageComponent } from './features/cart/components/cart-page/cart-pag
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
+<<<<<<< HEAD
   { path: '', component: LoginComponent },
   { path: 'signup', component: SignupComponent }, 
   {
@@ -33,4 +34,8 @@ export const routes: Routes = [
   },
 
   { path: '', component: HomeComponent },
+=======
+  { path: 'signup', component: SignupComponent },
+  { path: '**', redirectTo: 'signup' }, 
+>>>>>>> feature/auth
 ];

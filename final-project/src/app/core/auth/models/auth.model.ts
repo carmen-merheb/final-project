@@ -4,45 +4,34 @@ export interface ILoginRequest{
     }
     
 export interface ILoginResponse{
-    Login: {
-        AccessToken:      string;
-        ExpiresIn:        number;
-        RefreshExpiresIn: number;
-        RefreshToken:     string;
-        TokenType:        string;
-        NotBeforePolicy:  number;
-        SessionState:     string;
-        Scope:            string;
-      }
+    id: number;
+    username: string;
+    email: string;
+    firstName: string;
+    lastName: string;
+    gender: string;
+    image: string;
+    accessToken: string;
+    refreshToken: string;
     }
 
 export interface ISignUpRequest{
-    Firstname: string;
-    Lastname:  string;
-    Email:     string;
-    Password:  string;
-    RoleName:  string;
-        }
+    username: string;
+    email: string;
+    firstName: string;
+    lastName: string;
+    password: string;
+    }
       
-export interface ISignUpResponse{
-    id:                         string;
-    createdTimestamp:           number;
-    username:                   string;
-    enabled:                    boolean;
-    totp:                       boolean;
-    emailVerified:              boolean;
-    firstName:                  string;
-    lastName:                   string;
-    email:                      string;
-    disableableCredentialTypes: any[];
-    requiredActions:            any[];
-    notBefore:                  number;
-    access: {
-        manageGroupMembership: boolean;
-        view:                  boolean;
-        mapRoles:              boolean;
-        impersonate:           boolean;
-        manage:                boolean;
-          }
-    attributes:                 null;
-        }
+export interface ISignUpResponse {
+    id: number;
+    username: string;
+    email: string;
+    firstName: string;
+    lastName: string;
+    }
+
+export interface IToken {
+    refreshToken: string;
+    accessToken: string;
+    }

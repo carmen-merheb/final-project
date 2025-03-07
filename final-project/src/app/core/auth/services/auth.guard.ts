@@ -1,18 +1,24 @@
 import { CanActivateFn, Router } from '@angular/router';
-import { UserAuthService } from './login.service';
 import { inject } from '@angular/core';
-import { AuthState } from '../state/auth.reducers';
-import { select, Store } from '@ngrx/store';
-import { isLoggedIn } from '../state/auth.selector';
-import { tap } from 'rxjs';
+import { AuthService } from './login.service';
+import { Observable, of } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+
 export const authGuard: CanActivateFn = (route, state) => {
+  const authService = inject(AuthService);
   const router = inject(Router);
-  const store = inject(Store<AuthState>);
-  return store.pipe(
-    select(isLoggedIn),
-    tap((loggedIn) => {
-      if (!loggedIn) {
-        router.navigateByUrl('/login');
+
+  return authService.isAuthenticated$().pipe(
+    map(isAuthenticated => {
+      if (isAuthenticated) {
+        router.navigate(['/']);
+        return false;
+      }
+      return true;
+    }),
+    tap(canActivate => {
+      if (!canActivate) {
+        console.warn('Access denied - User is already logged in');
       }
     })
   );

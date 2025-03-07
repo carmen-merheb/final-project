@@ -1,37 +1,43 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { jwtDecode } from 'jwt-decode';
-import { UserAuthService } from './login.service';
-import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { logout } from '../state/auth.actions';
-import { AuthState } from '../state/auth.reducers';
+import { AuthService } from '../services/login.service';
+import { catchError, switchMap, throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { IToken } from '../models/auth.model';
 
-export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
-  const router = inject(Router);
-  const store = inject(Store<AuthState>);
-  const user = JSON.parse(localStorage.getItem('user')!);
-  if (!user) {
-    store.dispatch(logout());
-    return next(req);
-  }
+export const authInterceptor: HttpInterceptorFn = (req, next) => {
+  const authService = inject(AuthService);
+  const accessToken = authService.getAccessToken();
 
-  const token = user.token;
+  const authReq = accessToken
+    ? req.clone({ setHeaders: { Authorization: `Bearer ${accessToken}` } })
+    : req;
 
-  if (token) {
-    const decodedToken = jwtDecode(token);
-    const isExpired =
-      decodedToken && decodedToken.exp
-        ? decodedToken.exp * 1000 < Date.now()
-        : false;
+  return next(authReq).pipe(
+    catchError((error: HttpErrorResponse) => {
+      if (error.status === 401) {
+        return authService.refreshToken().pipe(
+          switchMap((tokens: IToken) => {
+            if (!tokens.accessToken) {
+              authService.logout();
+              return throwError(() => new Error('Session expired. Please log in again.'));
+            }
 
-    if (isExpired) {
-      alert(`Session expired! Please login again.`);
-      store.dispatch(logout());
-    } else {
-    }
-  } else {
-    router.navigateByUrl('/login');
-  }
-  return next(req);
+            authService.storeToken(tokens.accessToken, tokens.refreshToken);
+
+            const retryReq = req.clone({
+              setHeaders: { Authorization: `Bearer ${tokens.accessToken}` },
+            });
+
+            return next(retryReq);
+          }),
+          catchError(() => {
+            authService.logout();
+            return throwError(() => new Error('Session expired. Please log in again.'));
+          })
+        );
+      }
+      return throwError(() => error);
+    })
+  );
 };

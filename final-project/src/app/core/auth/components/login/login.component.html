@@ -1,11 +1,12 @@
 <div class="login-form">
     <h1>Login To Your Account</h1>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <div class="form-control">
         <label for="email">Email: </label>
         <input
           type="text"
           id="loginEmail"
+          name = "credential"
           formControlName="username"
           placeholder="Email or Username"
           required
@@ -24,6 +25,7 @@
         <input
           type="password"
           id="loginPassword"
+          name="password"
           formControlName="password"
           placeholder="********"
           required
@@ -48,11 +50,11 @@
       </div>
   
       <div class="form-control">
-        <button type="submit" [disabled]="loginForm.invalid">Login</button>
+        <button type="submit" [disabled]="loginForm.invalid" (click)="onLogin()">Login</button>
       </div>
     </form>
     <p>Don't have an account?
-      <a routerLink="/signup" (click)="debugClick()">Sign up here</a>
+      <a routerLink="/signup" >Sign up here</a>
     </p>
     
   </div>
