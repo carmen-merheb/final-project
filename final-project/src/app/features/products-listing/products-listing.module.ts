@@ -11,7 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { RouterModule } from '@angular/router';
-import { CardComponent } from '../../shared/components/card/card.component';
+import { CardComponent } from '../../shared/card/card/card.component';
 import { MatOption, MatSelect } from '@angular/material/select';
 
 @NgModule({
@@ -32,7 +32,7 @@ import { MatOption, MatSelect } from '@angular/material/select';
     RouterModule,
     CardComponent,
     MatSelect,
-    MatOption,
+    MatOption
   ],
   exports: [ProductsCardComponent, ProductsComponent],
 })

@@ -7,7 +7,7 @@ import { map, Observable, switchMap, tap } from 'rxjs';
 import { CategoriesService } from '../../services/categories.service';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { CardComponent } from '../../../../shared/components/card/card.component';
+import { CardComponent } from '../../../../shared/card/card/card.component';
 import { MatDivider, MatDividerModule } from '@angular/material/divider';
 import { NewProductsService } from '../../services/new-products.service';
 

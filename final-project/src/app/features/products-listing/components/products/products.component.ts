@@ -10,7 +10,7 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
-import { CardComponent } from '../../../../shared/components/card/card.component';
+import { CardComponent } from '../../../../shared/card/card/card.component';
 import { ProductsCardComponent } from '../products-card/products-card.component';
 import { FormsModule } from '@angular/forms';
 import { NewProductsService } from '../../services/new-products.service';
@@ -134,4 +134,6 @@ export class ProductsComponent {
     this.searchValue = '';
     this.productList = this.searchlist;
   }
+
+  
 }
