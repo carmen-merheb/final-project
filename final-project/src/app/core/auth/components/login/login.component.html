@@ -1,60 +1,45 @@
-<div class="login-form">
-    <h1>Login To Your Account</h1>
-    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-      <div class="form-control">
-        <label for="email">Email: </label>
-        <input
-          type="text"
-          id="loginEmail"
-          name = "credential"
-          formControlName="username"
-          placeholder="Email or Username"
-          required
-        />
-        @if (username?.invalid && (username?.touched || username?.dirty)) {
-          <span class="error-message">
-            @if (username?.errors?.['required']) {
-              Email is required
-            }
+<div class="login-container">
+    <div class="login-form">
+      <h1>Login to Your Account</h1>
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="form-box">
+        <div class="form-control">
+          <label for="loginEmail">Email:</label>
+          <input
+            type="text"
+            id="loginEmail"
+            name="credential"
+            formControlName="username"
+            placeholder="Email or Username"
+            required
+          />
+          <span class="error-message" *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.touched || loginForm.get('username')?.dirty)">
+            <span *ngIf="loginForm.get('username')?.errors?.['required']">Email is required</span>
           </span>
-        }
-      </div>
-  
-      <div class="form-control">
-        <label for="password">Password: </label>
-        <input
-          type="password"
-          id="loginPassword"
-          name="password"
-          formControlName="password"
-          placeholder="********"
-          required
-        />
-        <div class="message-container">
-          @if (password?.invalid && (password?.touched || password?.dirty)) {
-            <span class="error-message">
-              @if (password?.errors?.['required']) {
-                Password is required
-              }
-            </span>
-          }
-          @if (password?.errors?.['minlength']) {
-            <span class="error-message"
-              >Password should be at least 8 characters long.</span
-            >
-          }
-          @if (isLoginFail) {
-            <span class="error-message"> Email or password is incorrect.</span>
-          }
         </div>
-      </div>
   
-      <div class="form-control">
-        <button type="submit" [disabled]="loginForm.invalid" (click)="onLogin()">Login</button>
-      </div>
-    </form>
-    <p>Don't have an account?
-      <a routerLink="/signup" >Sign up here</a>
-    </p>
-    
+        <div class="form-control">
+          <label for="loginPassword">Password:</label>
+          <input
+            type="password"
+            id="loginPassword"
+            name="password"
+            formControlName="password"
+            placeholder="********"
+            required
+          />
+          <div class="message-container">
+            <span class="error-message" *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)">
+              <span *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</span>
+              <span *ngIf="loginForm.get('password')?.errors?.['minlength']">Password should be at least 8 characters long.</span>
+            </span>
+            <span class="error-message" *ngIf="isLoginFail">Email or password is incorrect.</span>
+          </div>
+        </div>
+  
+        <button type="submit" [disabled]="loginForm.invalid">Login</button>
+      </form>
+  
+      <p>Don't have an account? <a routerLink="/signup">Sign up here</a></p>
+    </div>
   </div>
+  
