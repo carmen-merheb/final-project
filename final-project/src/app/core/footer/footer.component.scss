@@ -5,7 +5,7 @@
 }
 
 footer {
-  background-color: var(--accent-color);
+  background-color: var(--primary-color);
   padding-top: 50px;
 }
 
@@ -20,12 +20,13 @@ footer {
   display: flex;
   justify-content: center;
   gap: 15px;
+  color: #000;
 }
 
 .socialIcons a {
   text-decoration: none;
   padding: 12px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: black;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -61,7 +62,7 @@ footer {
 }
 
 .footerNav ul li a {
-  color: white;
+  color: var(--text-color);
   text-decoration: none;
   font-size: 1.2em;
   font-weight: bold;

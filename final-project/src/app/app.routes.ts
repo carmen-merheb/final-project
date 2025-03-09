@@ -9,14 +9,16 @@ import { CartComponent } from './features/cart/components/cart/cart.component';
 import { CartPageComponent } from './features/cart/components/cart-page/cart-page.component';
 
 export const routes: Routes = [
-
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'login', component: LoginComponent, pathMatch: 'full' },
-  { path: 'signup', component: SignupComponent, pathMatch: 'full' },
+
+  { path: 'login', component: LoginComponent, canActivate: [authGuard], pathMatch: 'full' },
+  { path: 'signup', component: SignupComponent, canActivate: [authGuard], pathMatch: 'full' },
+
   { path: 'products', component: ProductsComponent, pathMatch: 'full' },
   { path: 'products/details/:id', component: ProductDetailsComponent, pathMatch: 'full' },
   { path: 'cart', component: CartPageComponent, pathMatch: 'full' },
   { path: 'home', component: HomeComponent, pathMatch: 'full' },
+
   {
     path: 'profile',
     loadChildren: () =>
@@ -24,7 +26,12 @@ export const routes: Routes = [
         (m) => m.ProfileRoutingModule
       ),
   },
-  { path: 'admin', loadChildren: () => import('./features/admin/admin-routing.module').then(m => m.AdminRoutingModule) },
-  //{ path: 'checkout', component: CheckoutPageComponent, pathMatch: 'full' },
-  //{ path: 'admin', component: AdminPageComponent, pathMatch: 'full' },
+
+  { 
+    path: 'admin', 
+    loadChildren: () => import('./features/admin/admin-routing.module').then(m => m.AdminRoutingModule) 
+  },
 ];
+
+  //{ path: 'checkout', component: CheckoutPageComponent, pathMatch: 'full' },
+
