@@ -18,6 +18,7 @@ import { NewProductsService } from '../../services/new-products.service';
   styleUrl: './product-details.component.scss',
 })
 export class ProductDetailsComponent implements OnInit {
+  
   similarProducts$!: Observable<Product[]>;
   id!: any;
   product!: Product;
@@ -40,6 +41,7 @@ export class ProductDetailsComponent implements OnInit {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
   ngOnInit(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     this.id = this.activeRoute.snapshot.paramMap.get('id');
     this.getSimilar();
   }
