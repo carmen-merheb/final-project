@@ -24,7 +24,7 @@ export const routes: Routes = [
         (m) => m.ProfileRoutingModule
       ),
   },
-  { path: 'admin', loadChildren: () => import('./admin/admin-routing.module').then(m => m.AdminRoutingModule) },
+  { path: 'admin', loadChildren: () => import('./features/admin/admin-routing.module').then(m => m.AdminRoutingModule) },
   //{ path: 'checkout', component: CheckoutPageComponent, pathMatch: 'full' },
   //{ path: 'admin', component: AdminPageComponent, pathMatch: 'full' },
 ];

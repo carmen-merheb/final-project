@@ -9,7 +9,7 @@ import { CategoriesComponent } from './features/homepage/categories/categories.c
 import { CommonModule } from '@angular/common';
 import { CartPageComponent } from './features/cart/components/cart-page/cart-page.component';
 import { CartComponent } from './features/cart/components/cart/cart.component';
-import { AdminPageComponent } from './admin/pages/admin-page/admin-page.component';
+import { AdminPageComponent } from './features/admin/pages/admin-page/admin-page.component';
 
 @Component({
   selector: 'app-root',
