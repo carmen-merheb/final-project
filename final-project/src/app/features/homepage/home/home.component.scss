@@ -9,28 +9,27 @@ section {
   background-position: center;
   background-attachment: fixed;
   display: flex;
-  align-items: center; // ✅ Center vertically
-  justify-content: left; // ✅ Center horizontally
+  align-items: center;
+  justify-content: left; 
   text-align: center;
   min-height: 100vh;
   position: relative;
   z-index: 1;
   padding: 10px 10% 20px;
   
-  &::before { // ✅ Adds a subtle dark overlay for better text visibility
+  &::before { 
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    //background: rgba(0, 0, 0, 0.3);
     z-index: -1;
   }
 }
 
 .home-text {
-  max-width: 750px; // ✅ Prevents text from stretching too wide
+  max-width: 750px; 
   color: white;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 
@@ -45,7 +44,7 @@ section {
       background-color: var(--primary-color);
       font-size: var(--font-xxxx-large);
       padding: 0 1.5rem;
-      border-radius: 12px; // ✅ Rounded corners for a softer look
+      border-radius: 12px; 
       box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
     }
   }
@@ -60,7 +59,7 @@ section {
 
   .shop-btn {
     display: inline-block;
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); // ✅ Nice gradient effect
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); 
     color: white;
     font-size: 1.2rem;
     font-weight: bold;
@@ -81,8 +80,8 @@ section {
 
 h2 {
   font-size: var(--font-x-large);
-  //margin-bottom: 4%;
-  margin-top: auto;
+  margin-top: 0px;
+  margin-bottom: 100px;
   text-align: center;
   font-weight: bold;
 }
@@ -95,6 +94,10 @@ h2 {
   text-align: justify;
   max-width: 90%;
   margin: auto;
+}
+
+.categories{
+  padding-bottom: 175px;
 }
 
 @media (max-width: 1024px) {
