@@ -1,5 +1,8 @@
 <nav class="navbar">
   <div class="nav-left">
+    <a href="/" class="logo">
+      <img src="assets/logo.png" alt="Shop Logo" />
+    </a>
     <ul class="nav-links">
       <li><a href="/">Home</a></li>
       <li><a href="#categories">Products</a></li>
@@ -14,6 +17,12 @@
 
   <div class="nav-right">
     <a href="/profile"><i class="fas fa-user"></i></a>
-    <a href="/cart"><i class="fas fa-shopping-cart"></i></a>
+    <a href="/cart" class="cart-icon">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count" *ngIf="cart.countItems() > 0">
+          {{ cart.countItems() }}
+      </span>
+  </a>
+    <button class="menu-toggle"><i class="fas fa-bars"></i></button>
   </div>
 </nav>

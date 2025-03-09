@@ -1,73 +1,101 @@
-@import '../../../../styles/buttons';
-@import '../../../../styles/typography';
-
-
 section {
-  padding: 4.8% 12% 0;
+  padding: 5% 10% 0;
 }
 
 .home {
-  padding: 100px 12% 20px;
+  padding: 100px 10% 20px;
   background: url('../../../../assets/home-background.png') no-repeat center center;
   background-size: cover !important;
   background-position: center;
   background-attachment: fixed;
   display: flex;
-  align-items: left;
-  justify-content: left;
+  align-items: center; // ✅ Center vertically
+  justify-content: left; // ✅ Center horizontally
   text-align: center;
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
+  padding: 10px 10% 20px;
+  
+  &::before { // ✅ Adds a subtle dark overlay for better text visibility
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    //background: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+  }
 }
 
 .home-text {
-  max-width: 100%;
+  max-width: 750px; // ✅ Prevents text from stretching too wide
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 
   h3 {
     font-size: var(--font-xx-large);
     color: var(--accent-color);
     margin: 0;
+    font-weight: bold;
 
     span {
-      color: black;
+      color: white;
       background-color: var(--primary-color);
       font-size: var(--font-xxxx-large);
       padding: 0 1.5rem;
+      border-radius: 12px; // ✅ Rounded corners for a softer look
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
     }
   }
 
   h1 {
     font-size: var(--font-xxx-large);
     margin-top: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
   }
 
   .shop-btn {
     display: inline-block;
-    background-color: var(--primary-color);
-    color: black;
-    font-size: x-large;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); // ✅ Nice gradient effect
+    color: white;
+    font-size: 1.2rem;
     font-weight: bold;
     padding: 1rem 2rem;
     text-decoration: none;
     border-radius: 8px;
     margin-top: 2rem;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+      background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    }
   }
 }
 
 h2 {
-  font-size: var(--font-xx-large);
-  margin-bottom: 5%;
+  font-size: var(--font-x-large);
+  //margin-bottom: 4%;
+  margin-top: auto;
+  text-align: center;
+  font-weight: bold;
 }
 
 .about-container {
-  padding-bottom: 50px;
+  padding-bottom: 175px;
   display: flex;
   gap: 3rem;
   align-items: center;
   text-align: justify;
-  
-
+  max-width: 90%;
+  margin: auto;
 }
-
 
 @media (max-width: 1024px) {
   .home {
@@ -78,5 +106,14 @@ h2 {
   .about-container {
     flex-direction: column;
     text-align: center;
+  }
+
+  .home-text {
+    max-width: 100%;
+  }
+
+  .shop-btn {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
   }
 }

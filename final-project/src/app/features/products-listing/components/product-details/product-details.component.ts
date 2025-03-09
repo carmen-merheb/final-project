@@ -34,7 +34,7 @@ export class ProductDetailsComponent implements OnInit {
   ) {}
   displayNewItem(id: number) {
     this.router.navigate(['/products/details', id]);
-
+    console.log('new item: ', id);
     this.id = id;
     this.getSimilar();
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -45,6 +45,9 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   getSimilar() {
+    if (this.id > 20) {
+      this.getNewProduct();
+    } else {
       this.similarProducts$ = this.productsService.getProductById(this.id).pipe(
         tap((product) => {
           this.product = product;
@@ -60,7 +63,7 @@ export class ProductDetailsComponent implements OnInit {
             )
         )
       );
-    
+    }
   }
 
   getNewProduct() {

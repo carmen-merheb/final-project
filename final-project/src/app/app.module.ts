@@ -23,11 +23,15 @@ import { MainProfileComponent } from './features/profile/components/main-profile
 import { PreviousOrderDetailsComponent } from './features/profile/components/previous-order-details/previous-order-details.component';
 import { PreviousOrdersComponent } from './features/profile/components/previous-orders/previous-orders.component';
 import { ProfileInfoComponent } from './features/profile/components/profile-info/profile-info.component';
+import { CheckoutPaymentItemComponent } from './features/checkout/components/checkout-payment-item/checkout-payment-item.component';
+import { CheckoutPaymentComponent } from './features/checkout/components/checkout-payment/checkout-payment.component';
+import { CheckoutPersonalInfoComponent } from './features/checkout/components/checkout-personal-info/checkout-personal-info.component';
+import { CheckoutPageComponent } from './features/checkout/checkout-page/checkout-page.component';
 
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, FooterComponent, MainProfileComponent, PreviousOrderDetailsComponent, PreviousOrdersComponent, ProfileInfoComponent],
+  declarations: [AppComponent, NavComponent, FooterComponent, MainProfileComponent, PreviousOrderDetailsComponent, PreviousOrdersComponent, ProfileInfoComponent, CheckoutPaymentItemComponent, CheckoutPaymentComponent, CheckoutPersonalInfoComponent, CheckoutPageComponent],
   imports: [
     BrowserModule,
     StoreModule.forRoot(authReducer),

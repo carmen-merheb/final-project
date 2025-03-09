@@ -10,7 +10,7 @@ import { CartPageComponent } from './features/cart/components/cart-page/cart-pag
 
 export const routes: Routes = [
 
-  { path: '', component: LoginComponent, pathMatch: 'full' },
+  { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
   { path: 'signup', component: SignupComponent, pathMatch: 'full' },
   { path: 'products', component: ProductsComponent, pathMatch: 'full' },

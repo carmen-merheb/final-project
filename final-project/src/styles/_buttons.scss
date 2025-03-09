@@ -1,7 +1,7 @@
 @mixin button-default($width, $height, $withborder: 0) {
     width: $width;
     height: $height;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     color: var(--text-color);
     border-radius: 8px;
     font-family: 'Lexend Tera', sans-serif;

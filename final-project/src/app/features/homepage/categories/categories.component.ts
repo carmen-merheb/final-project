@@ -26,34 +26,59 @@ export class CategoriesComponent {
     { 
       text: `Women's Fashion`,
       cols: 1,
-      rows: 4,
+      rows: 5,
       image: '../../../../assets/womens-fashion.png',
      
     },
     {
       text: `Men's Fashion`,
       cols: 1,
-      rows: 4,
+      rows: 5,
       image: '../../../../assets/mens-fashion.png',
       
     },
     {
       text: 'Jewelery',
       cols: 1,
-      rows: 4,
+      rows: 5,
       image: '../../../../assets/jewelry.png',
     },
     {
       text: 'Electronics',
       cols: 1,
-      rows: 4,
+      rows: 5,
       image: '../../../../assets/electronics.png',
     },
   ];
-
-
-  onNavigateCategory() {
-    this.router.navigate(['/products']);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  onNavigateCategory(category: string) {
+    let mappedCategory = '';
+  
+    switch (category.toLowerCase()) {
+      case "women's fashion":
+        mappedCategory = "women's clothing";
+        break;
+      case "men's fashion":
+        mappedCategory = "men's clothing";
+        break;
+      case "jewelery":
+        mappedCategory = "jewelery";
+        break;
+      case "electronics":
+        mappedCategory = "electronics";
+        break;
+      default:
+        mappedCategory = 'All';
+    }
+  
+    console.log(`🟢 Navigating to /products with mapped category: ${mappedCategory}`);
+  
+    this.router.navigate(['/products'], { queryParams: { category: mappedCategory } }).then(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   }
+  
+  
+  
+  
+  
 }

@@ -19,37 +19,27 @@
     </div>
 
     <div class="search-form-field">
-      <button
-        *ngIf="!searchValue"
-        class="search-button"
-        aria-label="Search"
-        (click)="onSearch()"
-      >
-        <i class="search-icon">🔍</i>
-      </button>
-      <input
-        type="text"
-        placeholder="Search"
-        [(ngModel)]="searchValue"
-        (input)="onSearch()"
-        (keyup.enter)="onSearch()"
-      />
-      <button
-        *ngIf="searchValue"
-        class="clear-button"
-        aria-label="Clear"
-        (click)="onClear()"
-      >
+      <button *ngIf="!searchValue" class="search-button" aria-label="Search" (click)="onSearch()"></button>
+      <input type="text" placeholder="Search" [(ngModel)]="searchValue" (input)="onSearch()" (keyup.enter)="onSearch()" />
+      <mat-icon>search</mat-icon>
+      <button *ngIf="searchValue" class="clear-button" aria-label="Clear" (click)="onClear()">
         <i class="clear-icon">❌</i>
       </button>
     </div>
   </div>
 </div>
 
-<div class="product-list">
-  <app-products-card
-    class="product"
-    *ngFor="let product of productList"
-    [productData]="product"
-  ></app-products-card>
+<!-- ✅ Sectioned Product Display -->
+<!-- ✅ Sectioned Product Display -->
+<div *ngFor="let category of categorizedProducts | keyvalue" [id]="category.key">
+  <h2 class="category-title">{{ category.key }}</h2>
+
+  <div class="product-list">
+    <app-products-card
+      class="product"
+      *ngFor="let product of category.value"
+      [productData]="product"
+    ></app-products-card>
+  </div>
 </div>
+

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -11,9 +11,8 @@ import { IUser } from '../models/user.model';
 })
 export class AuthApiService {
   private authUrl: string = environment.loginURL;
-  private userInfoSubject = new BehaviorSubject<IUser | null>(null);
 
-  userInfo$ = this.userInfoSubject.asObservable();
+  userInfo = signal<IUser | undefined>(undefined);
 
   constructor(private http: HttpClient) {}
 
@@ -29,10 +28,16 @@ export class AuthApiService {
     );
   }
 
-  getAuthUser(): Observable<IUser> {
+  getAuthUser() {
     return this.http.get<IUser>(`${this.authUrl}/user/me`).pipe(
-      tap(user => this.userInfoSubject.next(user)), 
-      catchError(error => this.handleError(error))
+      map(response => {
+        this.userInfo.set(response);
+        return response;
+      }),
+      catchError(error => {
+        console.error('API Error:', error);
+        throw error;
+      })
     );
   }
 

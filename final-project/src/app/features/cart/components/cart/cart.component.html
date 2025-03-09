@@ -4,7 +4,7 @@
 </div>
 
 <div class="cart-page">
-  <table>
+  <table *ngIf="cartService.countItems() > 0; else emptyCart">
     <thead>
       <tr>
         <th>Product</th>
@@ -12,54 +12,66 @@
         <th>Subtotal</th>
       </tr>
     </thead>
-    
+
     <tbody>
-      @for (item of cartService.cartItems(); track item; let i = $index) {
-        <tr>
-          <td>
-            <div class="single-product-info">
-              <div class="image-container">
-                <img [src]="item.product.image" alt="{{ item.product.title }}">
-              </div>
-              <div>
-                <p class="product-title">{{ item.product.title }}</p>
-                <small class="product-price">{{ item.product.price | currency: 'USD' }}</small>
-                <button class="delete-btn" (click)="onRemove(i)">🗑</button>
-              </div>
+      <tr *ngFor="let item of cartService.cartItems(); let i = index;">
+        <td>
+          <div class="single-product-info">
+            <div class="image-container">
+              <img [src]="item.product.image" [alt]="item.product.title">
             </div>
-          </td>
-
-          <td>
-            <div class="product-quantity">
-              <button class="quantity-btn" (click)="onDec(i)">−</button>
-              <input 
-                type="number" 
-                [(ngModel)]="item.quantity"
-                (ngModelChange)="onInputQuantity(i, item.quantity)" 
-                min="1" 
-                class="quantity-input"
-              />
-              <button class="quantity-btn" (click)="onInc(i)">+</button>
+            <div>
+              <p class="product-title">{{ item.product.title }}</p>
+              <small class="product-price">{{ item.product.price | currency:'USD' }}</small>
+              <button class="delete-btn" (click)="onRemove(i)">🗑</button>
             </div>
-          </td>
+          </div>
+        </td>
 
-          <td class="subtotal-price">
-            {{ item.product.price * item.quantity | currency: 'USD' }}
-          </td>
-        </tr>
-      }
+        <td>
+          <div class="product-quantity">
+            <button class="quantity-btn" (click)="onDec(i)">−</button>
+            <input 
+              type="number" 
+              [(ngModel)]="item.quantity"
+              (ngModelChange)="onInputQuantity(i, item.quantity)" 
+              min="1" 
+              class="quantity-input"
+              readonly  
+            />
+            <button class="quantity-btn" (click)="onInc(i)">+</button>
+          </div>
+        </td>
 
-      <tr class="cart-summary">
-        <td colspan="2">Total Items: {{ cartService.countItems() }}</td>
-        <td>{{ cartService.totalPrice() | currency }}</td>
+        <td class="subtotal-price">
+          {{ (item.product.price * item.quantity) | currency:'USD' }}
+        </td>
       </tr>
 
+      <!-- Cart Summary -->
+      <tr class="cart-summary">
+        <td colspan="2">Total Items: {{ cartService.countItems() }}</td>
+        <td>{{ cartService.totalPrice() | currency:'USD' }}</td>
+      </tr>
+
+      <!-- Checkout Button -->
       <tr class="checkout">
         <td colspan="2"></td>
         <td>
-          <button class="checkout-btn" (click)="onOrder()">Checkout</button>
+          <button class="checkout-btn" [routerLink]="['/checkout']">Checkout</button>
+
         </td>
       </tr>
     </tbody>
   </table>
+
+  <!-- Empty Cart Section -->
+  <ng-template #emptyCart>
+    <div class="empty-cart">
+      <h2>Your Cart is Empty</h2>
+      <p>Looks like you haven't added anything to your cart yet.</p>
+      <button class="shop-now-btn" [routerLink]="['/products']">Start Shopping</button>
+
+    </div>
+  </ng-template>
 </div>

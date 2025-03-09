@@ -79,6 +79,33 @@
     }
   }
 }
+.category-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 2.5rem auto 1.5rem; // ✅ Centers horizontally
+  text-transform: uppercase;
+  color: #333;
+  padding-bottom: 5px;
+  border-bottom: 3px solid black; // ✅ Gold Underline
+  text-align: center;
+  display: block; // ✅ Ensures it behaves like a block for centering
+  width: fit-content; // ✅ Ensures it only takes up necessary space
+}
+
+.category-title::before {
+  content: "🛍️ ";
+  font-size: 1.8rem;
+  display: inline-block; // ✅ Ensures the emoji aligns properly
+}
+
+
+@media (max-width: 768px) {
+  .category-title {
+    font-size: 1.5rem;
+    border-bottom: 2px solid black;
+  }
+}
+
 
 @media (max-width: 900px) {
   .products-action {

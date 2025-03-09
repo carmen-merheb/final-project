@@ -6,11 +6,12 @@ import { MatFormField } from '@angular/material/form-field';
 import { MatDivider } from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
 import { ICartItem } from '../../models/cart.model';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatFormField, MatDivider, FormsModule],
+  imports: [CommonModule, MatIconModule, MatFormField, MatDivider, FormsModule, RouterOutlet, RouterModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
 })
