@@ -7,6 +7,7 @@ import { ProductDetailsComponent } from './features/products-listing/components/
 import { HomeComponent } from './features/homepage/home/home.component';
 import { CartComponent } from './features/cart/components/cart/cart.component';
 import { CartPageComponent } from './features/cart/components/cart-page/cart-page.component';
+import { CheckoutPageComponent } from './features/checkout/pages/checkout-page/checkout-page.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -31,7 +32,9 @@ export const routes: Routes = [
     path: 'admin', 
     loadChildren: () => import('./features/admin/admin-routing.module').then(m => m.AdminRoutingModule) 
   },
+
+  { path: 'checkout', component: CheckoutPageComponent, pathMatch: 'full' },
 ];
 
-  //{ path: 'checkout', component: CheckoutPageComponent, pathMatch: 'full' },
+  
 

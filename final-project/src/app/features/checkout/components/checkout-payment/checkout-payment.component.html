@@ -1,0 +1,15 @@
+<div class="payment-container">
+    <h2 class="payment-title">Choose Payment Method</h2>
+
+    <div class="payment-options">
+        <label class="payment-option" *ngFor="let method of paymentMethods">
+            <input type="radio" name="paymentMethod" [value]="method.value" [(ngModel)]="selectedPayment" />
+            <div class="payment-content">
+                <i [class]="method.icon"></i>
+                <span>{{ method.label }}</span>
+            </div>
+        </label>
+    </div>
+
+    <button class="checkout-btn" (click)="onSubmitOrder()">Complete Purchase</button>
+</div>

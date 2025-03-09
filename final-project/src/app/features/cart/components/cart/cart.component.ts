@@ -34,8 +34,8 @@ export class CartComponent {
     }
   }
 
-  onRemove(i: number) {
-    this.cartService.removeItem(i);
+  onRemove(item: ICartItem) {
+    this.cartService.removeItem(item.product.id);
   }
 
   onClear() {

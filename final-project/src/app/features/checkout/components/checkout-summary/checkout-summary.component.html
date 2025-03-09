@@ -1,0 +1,14 @@
+<div class="checkout-card">
+    <h2>Order Summary</h2>
+    <div *ngFor="let item of cartItems()" class="order-item">
+        <div class="product-info">
+            <img [src]="item.product.image" [alt]="item.product.title">
+            <div class="product-details">
+                <p class="title">{{ item.product.title }}</p>
+                <p class="price">{{ item.product.price | currency }} (x{{ item.quantity }})</p>
+            </div>
+        </div>
+        <button class="remove-btn" (click)="removeItem(item)">🗑️</button>
+    </div>
+    <h3 class="total">Total: {{ totalPrice() | currency }}</h3>
+</div>

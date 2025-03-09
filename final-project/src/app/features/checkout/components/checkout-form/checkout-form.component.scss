@@ -1,0 +1,54 @@
+.checkout-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    height: 561px;
+}
+
+h2{
+    margin-bottom: 20px;
+}
+
+textarea {
+    resize: none; 
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+input, textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 420px;
+    transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+@media (max-width: 768px) {
+    .checkout-sections {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .left-section, .right-section {
+        width: 100%;
+        align-items: center;
+    }
+}

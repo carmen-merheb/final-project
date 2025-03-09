@@ -23,7 +23,7 @@
             <div>
               <p class="product-title">{{ item.product.title }}</p>
               <small class="product-price">{{ item.product.price | currency:'USD' }}</small>
-              <button class="delete-btn" (click)="onRemove(i)">🗑</button>
+              <button class="delete-btn" (click)="onRemove(item)">🗑</button>
             </div>
           </div>
         </td>
