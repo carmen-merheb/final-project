@@ -61,7 +61,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
    // console.log("🟢 ProductsComponent initialized");
-  
+   window.scrollTo({ top: 0, behavior: 'smooth' });
     forkJoin([
       this.productsService.getAllProducts(),
       this.i.getNewItems(),
