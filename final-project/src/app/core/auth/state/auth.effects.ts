@@ -4,7 +4,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { tap } from 'rxjs';
 import * as AuthActions from './auth.actions';
 import { Router } from '@angular/router';
-//import { CartService } from '../../../features/cart/services/cart.service';
+import { CartService } from '../../../features/cart/services/cart.service';
 
 
 @Injectable()
@@ -12,7 +12,7 @@ export class AuthEffect {
   constructor(
     private actions$: Actions,
     private router: Router,
-    //private cartItems: CartService,
+    private cartItems: CartService,
     private store: Store
   ) {}
   currentUser!: number;
