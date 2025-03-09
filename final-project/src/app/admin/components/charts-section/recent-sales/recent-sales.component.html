@@ -1,0 +1,9 @@
+<div class="recent-sales-container">
+    <h3>Recent Sales</h3>
+    <ul>
+      <li *ngFor="let sale of recentSales">
+        {{ sale.saleDate | date: 'shortDate' }} - {{ sale.productName }} ({{ sale.quantitySold }} sold) - ${{ sale.totalRevenue }}
+      </li>
+    </ul>
+  </div>
+  

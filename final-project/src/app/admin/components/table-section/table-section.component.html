@@ -1,0 +1,32 @@
+<div class="table-container">
+    <h2>Product Inventory</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th>Status</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.name }}</td>
+          <td>${{ product.price }}</td>
+          <td>{{ product.stock }}</td>
+          <td>
+            <span class="status" [ngClass]="{
+              'in-stock': product.status === 'In Stock',
+              'low-stock': product.status === 'Low Stock',
+              'out-of-stock': product.status === 'Out of Stock'
+            }">
+              {{ product.status }}
+            </span>
+          </td>
+          <td>{{ product.category }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
