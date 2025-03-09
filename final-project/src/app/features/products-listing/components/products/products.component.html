@@ -1,45 +1,66 @@
-<div class="shop-header">
-  <h1 class="title">Shop</h1>
+<div class="shop-container">
+  <div class="shop-header">
+    <h1 class="title">Discover Our Products</h1>
+    <p class="subtitle">Find the best deals on quality items</p>
+  </div>
 
-  <div class="products-action">
-    <div class="filter-sort">
-      <div class="select-container">
-        <label for="categorySelect">Filter</label>
-        <select id="categorySelect" (change)="onCategoryChange($event)">
-          <option *ngFor="let item of categories" [value]="item">{{ item }}</option>
-        </select>
-      </div>
-
-      <div class="select-container">
-        <label for="sortSelect">Sort</label>
-        <select id="sortSelect" (change)="onSortChange($event)">
-          <option *ngFor="let item of sortOptions" [value]="item">{{ item }}</option>
-        </select>
-      </div>
+  <div class="filter-bar">
+    <div class="filter-group">
+      <label for="categorySelect">Category</label>
+      <select id="categorySelect" (change)="onCategoryChange($event)">
+        <option value="">Categories</option>
+        <option *ngFor="let item of categories" [value]="item">{{ item | titlecase }}</option>
+      </select>
     </div>
 
-    <div class="search-form-field">
-      <button *ngIf="!searchValue" class="search-button" aria-label="Search" (click)="onSearch()"></button>
-      <input type="text" placeholder="Search" [(ngModel)]="searchValue" (input)="onSearch()" (keyup.enter)="onSearch()" />
-      <mat-icon>search</mat-icon>
-      <button *ngIf="searchValue" class="clear-button" aria-label="Clear" (click)="onClear()">
-        <i class="clear-icon">❌</i>
+    <div class="filter-group">
+      <label for="sortSelect">Sort</label>
+      <select id="sortSelect" (change)="onSortChange($event)">
+        <option value="">Sort</option>
+        <option *ngFor="let item of sortOptions" [value]="item">{{ item }}</option>
+      </select>
+    </div>
+
+      
+    <div class="search-group">
+      <mat-icon class="search-icon">search</mat-icon>
+      <input 
+        type="text" 
+        placeholder="Search products..." 
+        [(ngModel)]="searchValue" 
+        (input)="onSearch()" 
+        (keyup.enter)="onSearch()" 
+      />
+      
+      <button *ngIf="searchValue" class="clear-btn" (click)="onClear()">
+        <mat-icon>close</mat-icon>
       </button>
     </div>
   </div>
-</div>
 
-<!-- ✅ Sectioned Product Display -->
-<!-- ✅ Sectioned Product Display -->
-<div *ngFor="let category of categorizedProducts | keyvalue" [id]="category.key">
-  <h2 class="category-title">{{ category.key }}</h2>
-
+<div *ngIf="isSearchOrAllCategory(); else categoryView">
+  <h2 class="category-title">All</h2>
   <div class="product-list">
     <app-products-card
       class="product"
-      *ngFor="let product of category.value"
+      *ngFor="let product of productList"
       [productData]="product"
     ></app-products-card>
   </div>
 </div>
 
+<ng-template #categoryView>
+  <div *ngFor="let category of categorizedProducts | keyvalue" [id]="category.key">
+    <h2 class="category-title">{{ currentCategory | titlecase }}</h2>
+    <div class="product-list">
+      <app-products-card
+        class="product"
+        *ngFor="let product of category.value"
+        [productData]="product"
+      ></app-products-card>
+    </div>
+  </div>
+</ng-template>
+
+
+  </div>
