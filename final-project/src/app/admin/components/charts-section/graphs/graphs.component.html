@@ -1,0 +1,17 @@
+<div class="chart-container">
+    <h3>Sales Revenue by Product</h3>
+    <ngx-charts-bar-vertical 
+      [view]="view"
+      [results]="salesData"
+      [scheme]="colorScheme"
+      [gradient]="true"
+      [xAxis]="true"
+      [yAxis]="true"
+      [legend]="true"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      [xAxisLabel]="'Product'"
+      [yAxisLabel]="'Revenue'">
+    </ngx-charts-bar-vertical>
+  </div>
+  
