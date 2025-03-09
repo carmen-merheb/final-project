@@ -34,6 +34,16 @@ export class AuthApiService {
     );
   }
 
+  updateUserProfile(updatedUser: IUser): Observable<IUser> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.getAccessToken()}`);
+  
+    return this.http.put<IUser>(`${this.authUrl}/user/update`, updatedUser, { headers }).pipe(
+      tap(response => console.log("✅ Profile Updated: ", response)),
+      catchError(error => this.handleError(error))
+    );
+  }
+  
+
   private getAccessToken(): string | null {
     return localStorage.getItem('accessToken');
   }

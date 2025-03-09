@@ -1,41 +1,59 @@
-table {
-    width: 100%;
-    margin-top: 5rem;
+.order-details {
+  max-width: 750px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    border-bottom: 3px solid var(--accent-color, #007bff);
+    padding-bottom: 8px;
   }
-  table th {
-    font-weight: 500;
-    font-size: smaller;
-    text-align: left;
-    padding: 5px;
-    padding-left: 20px;
-    color: black;
-    background-color: var(--background-color);
+
+  .order-summary {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.05);
   }
-  
-  span {
-    color: var(--accent-color);
-  }
-  
-  td {
-    text-align: left;
-    font-weight: 300;
-    font-size: smaller;
-    img {
-      width: 5vw;
-      height: auto;
-      object-fit: contain;
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      transition: background 0.3s;
+
+      &:hover {
+        background: #f0f0f0;
+      }
+
+      .product-name {
+        font-weight: bold;
+      }
+
+      .product-price {
+        font-weight: bold;
+        color: var(--accent-color, #007bff);
+      }
     }
   }
-  
-  .content td {
-    padding: 1rem 1rem 0 1.5rem;
+
+  .total-price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    background: var(--accent-color, #007bff);
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
   }
-  th:first-child {
-    width: 100px;
-  }
-  
-  .footer {
-    background-color: var(--primary-color);
-    font-weight: 500;
-  }
-  
+}

@@ -1,7 +1,88 @@
-span {
-    color: var(--accent-color);
+.profile-info {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  h2 {
+    font-size: 1.8rem;
+    color: var(--primary-color, #333);
+    margin-bottom: 15px;
+    border-bottom: 3px solid var(--accent-color, #007bff);
+    display: inline-block;
+    padding-bottom: 8px;
   }
-  .info-container {
-    padding: 3% 5%;
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #444;
   }
-  
+
+  label {
+    display: block;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 12px;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border 0.3s;
+
+    &:focus {
+      border-color: var(--accent-color, #007bff);
+      outline: none;
+    }
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    button {
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s;
+      font-weight: bold;
+    }
+
+    .edit-btn {
+      background-color: #007bff;
+      color: white;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+
+    .save-btn {
+      background-color: #28a745;
+      color: white;
+
+      &:hover {
+        background-color: #218838;
+      }
+    }
+
+    .cancel-btn {
+      background-color: #dc3545;
+      color: white;
+
+      &:hover {
+        background-color: #c82333;
+      }
+    }
+  }
+}

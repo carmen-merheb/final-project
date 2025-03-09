@@ -1,9 +1,35 @@
-<h2>
-    Welcome back, <span> {{ userName }}</span>
-  </h2>
-  <div class="info-container">
-    <p>
-      Your email: <span>{{ email }}</span>
-    </p>
+<div class="profile-info">
+  <h2>Profile Information</h2>
+
+  <!-- Read-Only View -->
+  <div *ngIf="!editMode()">
+    <p><strong>Name:</strong> {{ userInfo()?.firstName }} {{ userInfo()?.lastName }}</p>
+    <p><strong>Email:</strong> {{ userInfo()?.email }}</p>
+    <p><strong>Phone:</strong> {{ userInfo()?.phone }}</p>
+    <p><strong>Address:</strong> {{ userInfo()?.address }}</p>
+    <button class="edit-btn" (click)="enableEdit()">✏️ Edit</button>
   </div>
-  
+
+  <!-- Edit Mode (Form) -->
+  <form *ngIf="editMode()" [formGroup]="profileForm">
+    <label>First Name</label>
+    <input formControlName="firstName" type="text">
+
+    <label>Last Name</label>
+    <input formControlName="lastName" type="text">
+
+    <label>Email</label>
+    <input formControlName="email" type="email">
+
+    <label>Phone</label>
+    <input formControlName="phone" type="text">
+
+    <label>Address</label>
+    <textarea formControlName="address"></textarea>
+
+    <div class="btn-group">
+      <button class="save-btn" type="button" (click)="saveChanges()">💾 Save</button>
+      <button class="cancel-btn" type="button" (click)="cancelEdit()">❌ Cancel</button>
+    </div>
+  </form>
+</div>

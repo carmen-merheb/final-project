@@ -1,33 +1,23 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { MatDivider } from '@angular/material/divider';
+import { Component, inject } from '@angular/core';
+import { AuthApiService } from '../../../../core/auth/services/auth-api.service';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { ProfileInfoComponent } from '../profile-info/profile-info.component';
 import { PreviousOrdersComponent } from '../previous-orders/previous-orders.component';
-import { MatIcon } from '@angular/material/icon';
-import { Store } from '@ngrx/store';
-import { AuthState } from '../../../../core/auth/state/auth.reducers';
-import { logout } from '../../../../core/auth/state/auth.actions';
-import { RouterModule } from '@angular/router';
-import { PreviousOrderDetailsComponent } from '../previous-order-details/previous-order-details.component';
 
 @Component({
   selector: 'app-main-profile',
-  templateUrl: './main-profile.component.html',
-  styleUrl: './main-profile.component.scss',
   standalone: true,
-  imports: [
-    CommonModule,
-    MatDivider,
-    PreviousOrdersComponent,
-    MatIcon,
-    RouterModule,
-    PreviousOrderDetailsComponent,
-  ],
+  imports: [RouterOutlet, RouterModule, ProfileInfoComponent, PreviousOrdersComponent],
+  templateUrl: './main-profile.component.html',
+  styleUrls: ['./main-profile.component.scss'],
 })
 export class MainProfileComponent {
-  constructor(private store: Store<AuthState>) {
-    console.log('profile loaded');
-  }
-  onLogout() {
-    this.store.dispatch(logout());
+  private authService = inject(AuthApiService);
+  userInfo = this.authService.userInfo;
+
+  ngOnInit() {
+    if (!this.userInfo()) {
+      this.authService.getAuthUser().subscribe();
+    }
   }
 }

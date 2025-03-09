@@ -1,52 +1,16 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { IUserLog } from '../../../cart/models/userLog.model';
-import { CommonModule } from '@angular/common';
-import { MatDivider } from '@angular/material/divider';
+import { Component, inject } from '@angular/core';
+import { OrdersService } from '../../services/orders.service';
 import { RouterModule } from '@angular/router';
-import { PreviousOrderDetailsComponent } from '../previous-order-details/previous-order-details.component';
-import { ProfileService } from '../../services/profile.service';
-import {
-  currentUser,
-  isLoggedIn,
-} from '../../../../core/auth/state/auth.selector';
-import { select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { AuthState } from '../../../../core/auth/state/auth.reducers';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-previous-orders',
-  templateUrl: './previous-orders.component.html',
-  styleUrl: './previous-orders.component.scss',
   standalone: true,
-  imports: [
-    CommonModule,
-    MatDivider,
-    RouterModule,
-    PreviousOrderDetailsComponent,
-  ],
+  imports: [CommonModule, RouterModule],
+  templateUrl: './previous-orders.component.html',
+  styleUrls: ['./previous-orders.component.scss'],
 })
-export class PreviousOrdersComponent implements OnInit {
-  isLoggedIn$!: Observable<boolean>;
-  previousItems!: IUserLog[];
-  currentUser!: number;
-  selectedOrder?: number;
-
-  constructor(
-    private profile: ProfileService,
-    private cdr: ChangeDetectorRef,
-    private store: Store<AuthState>
-  ) {}
-
-  ngOnInit(): void {
-    if (`user` in localStorage) {
-      this.currentUser = this.profile.getCurrentUser();
-      this.previousItems = this.profile.getPreviousItems(this.currentUser);
-    }
-  }
-
-  onSelectOrder(order: number): void {
-    this.selectedOrder = order;
-    console.log('selected order: ', order);
-    this.cdr.detectChanges();
-  }
+export class PreviousOrdersComponent {
+  private orderService = inject(OrdersService);
+  orders = this.orderService.getOrders();
 }
