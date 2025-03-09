@@ -20,7 +20,25 @@
       }
     }
 
-   
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+
+      li {
+        a {
+          text-decoration: none;
+          font-size: 1rem;
+          color: #333;
+          font-weight: 600;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: var(--accent-color);
+          }
+        }
+      }
+    }
   }
 
   .nav-center {
@@ -61,26 +79,6 @@
       font-size: 1.8rem;
       color: #333;
       cursor: pointer;
-      transition: color 0.3s ease;
-
-      &:hover {
-        color: var(--accent-color);
-      }
-    }
-  }
-
-}
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-
-  li {
-    a {
-      text-decoration: none;
-      font-size: 1rem;
-      color: #333;
-      font-weight: 600;
       transition: color 0.3s ease;
 
       &:hover {

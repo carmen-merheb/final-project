@@ -19,7 +19,7 @@ import { AuthService } from '../auth/services/login.service';
 export class NavComponent implements OnInit {
   isLoggedIn$!: Observable<boolean>;
   isLoggedOut$!: Observable<boolean>;
-  isMenuOpen = false;
+  menuOpen = false;
   currentRoute: string = '';
 
   constructor(
@@ -45,7 +45,7 @@ export class NavComponent implements OnInit {
     this.store.dispatch(logout());
   }
   toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
+    this.menuOpen = !this.menuOpen;
   }
   handleLogout() {
     this.authService.logout();

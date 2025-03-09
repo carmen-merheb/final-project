@@ -5,6 +5,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from '../../../../environment/env.dev';
 import { ILoginRequest, ILoginResponse, ISignUpRequest, ISignUpResponse } from '../models/auth.model';
 import { IUser } from '../models/user.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,9 @@ import { IUser } from '../models/user.model';
 export class AuthApiService {
   private authUrl: string = environment.loginURL;
   userInfo = signal<IUser | undefined>(undefined);
+  router: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, route: Router) {}
 
   login(form: ILoginRequest): Observable<ILoginResponse> {
     return this.http.post<ILoginResponse>(`${this.authUrl}/auth/login`, form).pipe(
@@ -52,7 +54,10 @@ export class AuthApiService {
     console.error("🚨 API Error:", error);
     
     if (error.status === 401) {
+      
+      this.router.navigate(['/login']);
       console.error("❌ Unauthorized (401) - Invalid Token or Expired Session");
+
       alert("Session expired. Please log in again.");
     } else if (error.status === 403) {
       console.error("🚫 Forbidden (403) - Access Denied");
