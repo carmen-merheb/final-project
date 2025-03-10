@@ -22,8 +22,5 @@ export class ProductsApiService {
     return this.http.get<Product>(`${environment.apiURL}products/${id}`);
   }
 
-  /*getAllProductsAdmin() {
-    return this.http.get<IProductsAdminDTO>(`${environment.apiURL}?limit=0&select=id,title,description,category,price,stock,availabilityStatus`);
-  }*/
 }
 

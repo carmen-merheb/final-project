@@ -16,8 +16,8 @@ export class CheckoutSummaryComponent {
   totalPrice = computed(() => this.cartService.totalPrice());
 
   removeItem(item: ICartItem) {
-    console.log("🗑️ Removing item:", item.product.title, "ID:", item.product.id);
-    console.log("🔍 Cart before removal:", this.cartItems());
+    console.log("Removing item:", item.product.title, "ID:", item.product.id);
+    console.log("Cart before removal:", this.cartItems());
 
     this.cartService.removeItem(item.product.id);
   }

@@ -27,7 +27,6 @@ export class ProfileInfoComponent {
     });
   }
 
-  /** ✅ Initialize Form with Existing User Data */
   private initForm(user: IUser) {
     this.profileForm = this.fb.group({
       firstName: [user.firstName, Validators.required],
@@ -39,12 +38,10 @@ export class ProfileInfoComponent {
     });
   }
 
-  /** ✅ Toggle Edit Mode */
   enableEdit() {
     this.editMode.set(true);
   }
 
-  /** ✅ Save Updated Info */
   saveChanges() {
     if (this.profileForm.valid) {
       const updatedUser = { ...this.userInfo(), ...this.profileForm.value };
@@ -56,7 +53,6 @@ export class ProfileInfoComponent {
     }
   }
 
-  /** ✅ Cancel Editing */
   cancelEdit() {
     this.initForm(this.userInfo()!);
     this.editMode.set(false);

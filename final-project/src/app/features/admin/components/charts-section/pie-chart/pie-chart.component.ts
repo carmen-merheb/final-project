@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Color, NgxChartsModule, ScaleType } from '@swimlane/ngx-charts'; // ✅ Import Color & ScaleType
+import { Color, NgxChartsModule, ScaleType } from '@swimlane/ngx-charts'; 
 
 @Component({
   selector: 'app-pie-chart',
@@ -16,11 +16,10 @@ export class PieChartComponent {
     { name: 'In Stock', value: 10 }
   ];
 
-  // ✅ Correct colorScheme definition using `Color` type
   colorScheme: Color = {
     name: 'customScheme',
     selectable: true,
     group: ScaleType.Ordinal,
-    domain: ['#FF0000', '#FFD700', '#008000'] // 🔴 Red, 🟡 Yellow, 🟢 Green
+    domain: ['#FF0000', '#FFD700', '#008000'] 
   };
 }

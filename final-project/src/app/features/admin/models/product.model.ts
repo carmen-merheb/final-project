@@ -2,10 +2,10 @@ export interface Product {
     id: string;
     name: string;
     price: number;
-    stock: number; // Number of items in stock
-    status: 'In Stock' | 'Low Stock' | 'Out of Stock'; // Stock status
+    stock: number; 
+    status: 'In Stock' | 'Low Stock' | 'Out of Stock'; 
     category: string;
     imageUrl: string;
-    createdBy: string; // Admin who issued this product
+    createdBy: string; 
   }
   

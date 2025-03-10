@@ -5,10 +5,10 @@ import { IOrder, IUserLog } from '../models/order.model';
   providedIn: 'root'
 })
 export class OrderService {
-  orders = signal<IUserLog[]>([]); // ✅ Signal for state tracking
+  orders = signal<IUserLog[]>([]);
 
   constructor() {
-    this.loadOrders(); // ✅ Load orders from storage on init
+    this.loadOrders(); 
   }
 
   placeOrder(userId: number, orderModel: IOrder, finalPrice: number) {
@@ -23,8 +23,8 @@ export class OrderService {
     prevOrders.push(log);
     localStorage.setItem(`user#${userId} orders`, JSON.stringify(prevOrders));
 
-    this.orders.set(prevOrders); // ✅ Update the signal
-    console.log('✅ Order Stored:', prevOrders);
+    this.orders.set(prevOrders); 
+    console.log('Order Stored:', prevOrders);
   }
 
   private loadOrders() {

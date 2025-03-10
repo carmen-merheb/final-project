@@ -9,14 +9,13 @@
   overflow-y: auto;
 }
 
-/* Table Styling */
 table {
   width: 100%;
   border-collapse: collapse;
 }
 
 th {
-  background-color: #e64c86; /* Softer pink */
+  background-color: var(--accent-color); 
   color: white;
   text-align: left;
   padding: 14px;
@@ -25,7 +24,7 @@ th {
 }
 
 tr:nth-child(even) {
-  background-color: #fafafa; /* Alternating row color */
+  background-color: #fafafa; 
 }
 
 td {
@@ -34,7 +33,6 @@ td {
   vertical-align: middle;
 }
 
-/* Image Styling */
 .image-container img {
   width: 80px;
   height: auto;
@@ -43,17 +41,15 @@ td {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
-/* Header */
 .cart-header {
   text-align: center;
   font-size: 1.8rem;
   font-weight: bold;
   padding: 15px;
   background-color: white;
-  border-bottom: 3px solid #e64c86;
+  border-bottom: 3px solid var(--accent-color);
 }
 
-/* Product Details */
 .single-product-info {
   display: flex;
   align-items: center;
@@ -62,7 +58,6 @@ td {
   font-weight: 500;
 }
 
-/* Quantity Controls */
 .product-quantity {
   display: flex;
   align-items: center;
@@ -70,7 +65,7 @@ td {
 }
 
 .quantity-btn {
-  background-color: #e64c86;
+  background-color: var(--accent-color);
   border: none;
   cursor: pointer;
   padding: 6px 12px;
@@ -95,7 +90,6 @@ td {
   padding: 6px;
 }
 
-/* Delete Button */
 .delete-btn {
   background: none;
   border: none;
@@ -109,7 +103,6 @@ td {
   color: rgba(217, 83, 79, 0.85);
 }
 
-/* Checkout Button */
 .checkout-container {
   display: flex;
   justify-content: flex-end;
@@ -117,7 +110,7 @@ td {
 }
 
 .checkout-btn {
-  background-color: #e64c86;
+  background-color: var(--accent-color);
   color: white;
   border: none;
   padding: 14px 20px;
@@ -133,7 +126,6 @@ td {
   transform: scale(1.03);
 }
 
-/* Empty Cart */
 .empty-cart {
   text-align: center;
   padding: 50px 20px;
@@ -159,7 +151,7 @@ td {
 }
 
 .shop-now-btn {
-  background-color: #e64c86;
+  background-color: var(--accent-color);
   color: white;
   padding: 12px 18px;
   font-size: 1rem;
@@ -175,7 +167,6 @@ td {
   transform: scale(1.03);
 }
 
-/* Responsive Design */
 @media (max-width: 1024px) {
   .cart-page {
     width: 95%;

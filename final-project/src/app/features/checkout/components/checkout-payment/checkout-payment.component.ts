@@ -33,11 +33,11 @@ export class CheckoutPaymentComponent {user: IUser | null;
   ];
 
   checkout() {
-    console.log('🔍 Fetching user from API before checkout...');
+    //console.log('Fetching user from API before checkout...');
 
   this.authApiService.getAuthUser().subscribe({
     next: (user) => {
-      console.log('✅ User Retrieved:', user);
+      //console.log('User Retrieved:', user);
 
     if (!this.cartService.cartItems().length) {
       alert('Your cart is empty!');
@@ -54,15 +54,15 @@ export class CheckoutPaymentComponent {user: IUser | null;
     };
 
     this.orderService.placeOrder(user.id, orderModel, this.cartService.totalPrice());
-    this.cartService.clearCart(); // ✅ Clear cart after order
+    this.cartService.clearCart(); 
 
     alert('Your order has been placed successfully!');
-    //this.router.navigate(['/profile/orders']); // ✅ Redirect to previous orders
+    //this.router.navigate(['/profile/orders']); 
   },
   error: (error) => {
-    console.error('❌ Error fetching user:', error);
+    console.error('Error fetching user:', error);
     alert('Session expired. Please log in again.');
-    this.router.navigate(['/login']); // ✅ Redirect user to login if session expired
+    this.router.navigate(['/login']); 
   }
 });
 }

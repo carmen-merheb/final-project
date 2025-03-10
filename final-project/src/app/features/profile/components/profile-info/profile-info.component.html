@@ -1,7 +1,6 @@
 <div class="profile-info">
   <h2>Profile Information</h2>
 
-  <!-- Read-Only View -->
   <div *ngIf="!editMode()">
     <p><strong>Name:</strong> {{ userInfo()?.firstName }} {{ userInfo()?.lastName }}</p>
     <p><strong>Email:</strong> {{ userInfo()?.email }}</p>
@@ -10,8 +9,7 @@
     <p><strong>City:</strong> {{ userInfo()?.address?.city }}</p>
     <button class="edit-btn" (click)="enableEdit()">✏️ Edit</button>
   </div>
-
-  <!-- Edit Mode (Form) -->
+  
   <form *ngIf="editMode()" [formGroup]="profileForm">
     <label>First Name</label>
     <input formControlName="firstName" type="text">

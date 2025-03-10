@@ -45,7 +45,7 @@ export class CheckoutPageComponent {  user: IUser | null;
     };
 
     this.orderService.placeOrder(this.user.id, orderModel, this.finalPrice);
-    this.cartService.clearCart(); // ✅ Clear the cart after order
+    this.cartService.clearCart(); 
 
     alert('Your order has been placed successfully!');
   }

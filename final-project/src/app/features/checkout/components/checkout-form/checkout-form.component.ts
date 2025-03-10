@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthApiService } from '../../../../core/auth/services/auth-api.service';
+import { IUser } from '../../../../core/auth/models/user.model';
 
 @Component({
   selector: 'app-checkout-form',
@@ -11,21 +12,26 @@ import { AuthApiService } from '../../../../core/auth/services/auth-api.service'
   imports: [CommonModule, ReactiveFormsModule]
 })
 export class CheckoutFormComponent implements OnInit {
-  checkoutForm!: FormGroup;
+  userInfo = signal<IUser | undefined>(undefined);
+  profileForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private authApiService: AuthApiService) {}
+  constructor(private fb: FormBuilder, private authService: AuthApiService) {}
 
-  ngOnInit(): void {
-    this.checkoutForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required],
-      address: ['', Validators.required]
-    });
-
-    this.authApiService.getAuthUser().subscribe(user => {
-      this.checkoutForm.patchValue(user);
-    });
-  }
+   ngOnInit() {
+      this.authService.getAuthUser().subscribe(user => {
+        this.userInfo.set(user);
+        this.initForm(user);
+      });
+    }
+  
+    private initForm(user: IUser) {
+      this.profileForm = this.fb.group({
+        firstName: [user.firstName, Validators.required],
+        lastName: [user.lastName, Validators.required],
+        email: [user.email, [Validators.required, Validators.email]],
+        phone: [user.phone, Validators.required],
+        address: [user.address.address, Validators.required],
+        city: [user.address.city, Validators.required],
+      });
+    }
 }

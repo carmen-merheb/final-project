@@ -70,7 +70,7 @@ export class CategoriesComponent {
         mappedCategory = 'All';
     }
   
-    console.log(`🟢 Navigating to /products with mapped category: ${mappedCategory}`);
+    //console.log(`Navigating to /products with mapped category: ${mappedCategory}`);
   
     this.router.navigate(['/products'], { queryParams: { category: mappedCategory } }).then(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });

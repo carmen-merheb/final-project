@@ -60,7 +60,7 @@ export class ProductsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-   // console.log("🟢 ProductsComponent initialized");
+   // console.log("ProductsComponent initialized");
    window.scrollTo({ top: 0, behavior: 'smooth' });
     forkJoin([
       this.productsService.getAllProducts(),
@@ -70,7 +70,7 @@ export class ProductsComponent implements OnInit {
         this.originalProductList = [...mockProducts, ...apiProducts];
         this.productList = [...this.originalProductList];
   
-        // console.log("✅ Loaded originalProductList:", this.originalProductList.length);
+        // console.log("Loaded originalProductList:", this.originalProductList.length);
   
         this.route.queryParams.subscribe(params => {
           let category = params['category'];
@@ -115,17 +115,17 @@ export class ProductsComponent implements OnInit {
       return acc;
     }, {} as { [category: string]: Product[] });
 
-    // console.log("✅ Updated Categorized Products:", this.categorizedProducts);
+    // console.log("Updated Categorized Products:", this.categorizedProducts);
   }
 
   onCategoryChange(event: any) {
     const value = event.target.value;
-   // console.log(`🟢 onCategoryChange called with value: ${value}`);
+   // console.log(`onCategoryChange called with value: ${value}`);
   
     this.currentCategory = value;
   
     if (value === 'All' || !value) {
-    //  console.log("🟢 Showing all products");
+    //  console.log("Showing all products");
       this.productList = [...this.originalProductList]; 
       this.applySorting();
       this.groupProductsByCategory();
@@ -175,8 +175,8 @@ export class ProductsComponent implements OnInit {
   onSearch(): void {
     const searchTerm = this.searchValue.trim().toLowerCase();
   
-   // console.log("🔍 Search triggered with term:", searchTerm);
-   // console.log("📦 Total products available:", this.originalProductList.length);
+   // console.log("Search triggered with term:", searchTerm);
+   // console.log("Total products available:", this.originalProductList.length);
   
     if (searchTerm) {
       this.productList = this.originalProductList.filter((product) => {
@@ -185,9 +185,9 @@ export class ProductsComponent implements OnInit {
         return matches;
       });
   
-     // console.log("✅ Filtered products count:", this.productList.length);
+     // console.log("Filtered products count:", this.productList.length);
     } else {
-      //console.log("🔄 Resetting product list to selected category:", this.currentCategory);
+      //console.log("Resetting product list to selected category:", this.currentCategory);
       this.onCategoryChange({ target: { value: this.currentCategory } } as any);
     }
   

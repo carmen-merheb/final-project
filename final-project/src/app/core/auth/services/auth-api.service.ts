@@ -19,8 +19,8 @@ export class AuthApiService {
 
   login(form: ILoginRequest): Observable<ILoginResponse> {
     return this.http.post<ILoginResponse>(`${this.authUrl}/auth/login`, form).pipe(
-      tap(response => console.log("✅ Login Successful: ", response)),
-      catchError(error => this.handleError(error)) // 🔥 Calls error handler
+      tap(response => console.log("Login Successful: ", response)),
+      catchError(error => this.handleError(error)) 
     );
   }
 
@@ -30,7 +30,7 @@ export class AuthApiService {
     return this.http.get<IUser>(`${this.authUrl}/user/me`, { headers }).pipe(
       tap(response => {
         this.userInfo.set(response);
-        console.log("✅ User Info: ", response);
+        console.log("User Info: ", response);
       }),
       catchError(error => this.handleError(error))
     );
@@ -40,7 +40,7 @@ export class AuthApiService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.getAccessToken()}`);
   
     return this.http.put<IUser>(`${this.authUrl}/user/update`, updatedUser, { headers }).pipe(
-      tap(response => console.log("✅ Profile Updated: ", response)),
+      tap(response => console.log("Profile Updated: ", response)),
       catchError(error => this.handleError(error))
     );
   }
@@ -51,18 +51,18 @@ export class AuthApiService {
   }
 
   private handleError(error: HttpErrorResponse): Observable<never> {
-    console.error("🚨 API Error:", error);
+    console.error("API Error:", error);
     
     if (error.status === 401) {
       
       this.router.navigate(['/login']);
-      console.error("❌ Unauthorized (401) - Invalid Token or Expired Session");
+      console.error("Unauthorized (401) - Invalid Token or Expired Session");
 
       alert("Session expired. Please log in again.");
     } else if (error.status === 403) {
-      console.error("🚫 Forbidden (403) - Access Denied");
+      console.error("Forbidden (403) - Access Denied");
     } else if (error.status === 500) {
-      console.error("💥 Server Error (500) - Something went wrong on the backend");
+      console.error("Server Error (500) - Something went wrong on the backend");
     }
 
     return throwError(() => new Error(error.message || 'Something went wrong'));

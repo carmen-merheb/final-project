@@ -58,7 +58,6 @@
     color: black;
 }
 
-/* Highlight the selected payment method */
 .payment-option input:checked + .payment-content i {
     color: #0056b3;
 }
@@ -68,7 +67,6 @@
     color: #0056b3;
 }
 
-/* Complete Purchase Button */
 .checkout-btn {
     background: var(--accent-color);
     color: white;
