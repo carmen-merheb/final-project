@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './core/auth/components/login/login.component';
 import { SignupComponent } from './core/auth/components/signup/signup.component';
 import { ProductsComponent } from './features/products-listing/components/products/products.component';
@@ -8,6 +8,7 @@ import { HomeComponent } from './features/homepage/home/home.component';
 import { CartComponent } from './features/cart/components/cart/cart.component';
 import { CartPageComponent } from './features/cart/components/cart-page/cart-page.component';
 import { CheckoutPageComponent } from './features/checkout/pages/checkout-page/checkout-page.component';
+import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -36,5 +37,10 @@ export const routes: Routes = [
   { path: 'checkout', component: CheckoutPageComponent, pathMatch: 'full' },
 ];
 
-  
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}
+
 

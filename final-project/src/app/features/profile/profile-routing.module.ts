@@ -6,14 +6,25 @@ import { PreviousOrdersComponent } from './components/previous-orders/previous-o
 import { PreviousOrderDetailsComponent } from './components/previous-order-details/previous-order-details.component';
 
 
+
 const routes: Routes = [
-  { path: '', component: MainProfileComponent },
-  { path: 'info', component: ProfileInfoComponent },
-  { path: 'orders', component: PreviousOrdersComponent },
-  { path: 'orders/:id', component: PreviousOrderDetailsComponent },
+  { path: '', component: MainProfileComponent,
+    children: [
+      {
+        path: 'info',
+        component: ProfileInfoComponent,
+        outlet: 'profile',
+      },
+      {
+        path: 'orders',
+        component: PreviousOrdersComponent,
+        outlet: 'profile',
+      },
+    ]
+   },
+   { path: 'orders/:id', component: PreviousOrderDetailsComponent },
 
 ];
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
