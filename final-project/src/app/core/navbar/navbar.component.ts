@@ -42,6 +42,7 @@ export class NavComponent implements OnInit {
   }
 
   onLogout() {
+    this.authService.logout();
     this.store.dispatch(logout());
   }
   toggleMenu() {

@@ -18,14 +18,15 @@
 }
 
 h5 {
-  font-size: var(--font-xx-small);
+  font-size: var(--font-small);
   font-weight: 300;
   margin: 3% 1rem;
+  text-align: center;
 }
 
 .product-info {
   display: grid;
-
+  background-color: rgb(224, 224, 224);
   grid-row: 1fr 1fr;
   width: 100%;
   height: 150px;

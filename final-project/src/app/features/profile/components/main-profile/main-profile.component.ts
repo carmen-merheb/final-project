@@ -20,6 +20,8 @@ export class MainProfileComponent {
   ngOnInit() {
     if (!this.userInfo()) {
       this.authService.getAuthUser().subscribe();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
+
 }

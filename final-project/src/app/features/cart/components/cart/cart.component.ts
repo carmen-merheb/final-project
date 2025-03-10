@@ -25,6 +25,10 @@ export class CartComponent {
     this.finalPrice = this.cartService.totalPrice(); 
   }
 
+  ngOnInit(){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   onInputQuantity(i: number, input: number) {
     console.log('input: ', input);
     if (input === 0) {

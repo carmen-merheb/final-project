@@ -11,4 +11,10 @@ import { ChartsPageComponent } from '../../components/charts-section/charts-page
 })
 export class AdminPageComponent {
 
+  ngOnInit() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
 }
+
+
