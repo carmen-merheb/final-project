@@ -1,23 +1,26 @@
 import { Component } from '@angular/core';
-import { PRODUCTS } from '../../../assets/dummydata';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Color, NgxChartsModule, ScaleType } from '@swimlane/ngx-charts'; // ✅ Import Color & ScaleType
 
 @Component({
   selector: 'app-pie-chart',
-  imports: [NgxChartsModule,CommonModule, RouterOutlet],
+  imports: [NgxChartsModule],
   templateUrl: './pie-chart.component.html',
   styleUrls: ['./pie-chart.component.scss']
 })
 export class PieChartComponent {
-  view: [number, number] = [400, 300];
+  view: [number, number] = [500, 300]; 
 
   stockData = [
-    { name: 'In Stock', value: PRODUCTS.filter(p => p.status === 'In Stock').length },
-    { name: 'Low Stock', value: PRODUCTS.filter(p => p.status === 'Low Stock').length },
-    { name: 'Out of Stock', value: PRODUCTS.filter(p => p.status === 'Out of Stock').length }
+    { name: 'Out of Stock', value: 5 },
+    { name: 'Low Stock', value: 3 },
+    { name: 'In Stock', value: 10 }
   ];
 
-  colorScheme = 'vivid';
+  // ✅ Correct colorScheme definition using `Color` type
+  colorScheme: Color = {
+    name: 'customScheme',
+    selectable: true,
+    group: ScaleType.Ordinal,
+    domain: ['#FF0000', '#FFD700', '#008000'] // 🔴 Red, 🟡 Yellow, 🟢 Green
+  };
 }
