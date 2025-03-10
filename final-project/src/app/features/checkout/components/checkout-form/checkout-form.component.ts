@@ -21,7 +21,7 @@ export class CheckoutFormComponent implements OnInit {
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
-      //address: ['', Validators.required]
+      address: ['', Validators.required]
     });
 
     this.authApiService.getAuthUser().subscribe(user => {

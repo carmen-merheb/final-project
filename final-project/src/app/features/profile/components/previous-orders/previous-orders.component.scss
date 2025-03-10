@@ -1,6 +1,5 @@
 .previous-orders {
   width: 600px;
-  overflow-y: auto;
   margin: auto;
   background: white;
   padding: 25px;
@@ -8,6 +7,7 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   max-height: 600px;
+  overflow-y: auto;
   scroll-behavior: smooth;
 
   h2 {
@@ -20,16 +20,37 @@
     list-style: none;
     padding: 0;
 
-    li {
+    .order-item {
       padding: 12px;
       border-bottom: 1px solid #ddd;
       transition: background 0.3s;
+      cursor: pointer;
 
-      a {
-        text-decoration: none;
+      .order-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         font-size: 1.1rem;
-        color: var(--accent-color, #007bff);
         font-weight: bold;
+        color: var(--accent-color, #007bff);
+      }
+
+      .order-details {
+        margin-top: 10px;
+        background: #f9f9f9;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: left;
+
+        h4 {
+          margin: 5px 0;
+          font-size: 1.2rem;
+        }
+
+        ul {
+          padding-left: 15px;
+          list-style: disc;
+        }
       }
 
       &:hover {

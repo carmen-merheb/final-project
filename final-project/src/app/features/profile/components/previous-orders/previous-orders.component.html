@@ -1,11 +1,28 @@
 <div class="previous-orders">
-  <h2>Previous Orders</h2>
-  
-  <ul>
-    <li *ngFor="let order of orders">
-      <a routerLink="['/profile/orders', order.id]">
-        Order #{{ order.id }} - {{ order.total | currency }}
-      </a>
+  <h2>Your Previous Orders</h2>
+
+  <ul *ngIf="orders.length > 0; else noOrders">
+    <li *ngFor="let order of orders" (click)="toggleOrderDetails(order.orderId)" class="order-item">
+      <div class="order-header">
+        <span>Order #{{ order.orderId }} - {{ order.totalPrice | currency }}</span>
+        <i class="fas" [ngClass]="expandedOrderId === order.orderId ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+      </div>
+
+      <div *ngIf="expandedOrderId === order.orderId" class="order-details">
+        <p><strong>Date:</strong> {{ order.order.date | date:'medium' }}</p>
+        <p><strong>Total:</strong> {{ order.totalPrice | currency }}</p>
+
+        <h4>Items:</h4>
+        <ul>
+          <li *ngFor="let item of order.order.items">
+            {{ item.productId }} - Quantity: {{ item.productQuantity }}
+          </li>
+        </ul>
+      </div>
     </li>
   </ul>
+
+  <ng-template #noOrders>
+    <p>You have no previous orders.</p>
+  </ng-template>
 </div>

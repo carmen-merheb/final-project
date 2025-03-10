@@ -6,7 +6,8 @@
     <p><strong>Name:</strong> {{ userInfo()?.firstName }} {{ userInfo()?.lastName }}</p>
     <p><strong>Email:</strong> {{ userInfo()?.email }}</p>
     <p><strong>Phone:</strong> {{ userInfo()?.phone }}</p>
-    <p><strong>Address:</strong> {{ userInfo()?.address }}</p>
+    <p><strong>Address:</strong> {{ userInfo()?.address?.address }}</p>
+    <p><strong>City:</strong> {{ userInfo()?.address?.city }}</p>
     <button class="edit-btn" (click)="enableEdit()">✏️ Edit</button>
   </div>
 
@@ -26,6 +27,9 @@
 
     <label>Address</label>
     <textarea formControlName="address" style="resize: none;"></textarea>
+
+    <label>City</label>
+    <input formControlName="city" style="resize: none;">
 
     <div class="btn-group">
       <button class="save-btn" type="button" (click)="saveChanges()">💾 Save</button>

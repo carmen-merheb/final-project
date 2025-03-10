@@ -6,6 +6,9 @@ export interface IUser{
     phone:      string;
     username:   string;
     password:   string;
-    address:  string;
+    address: {
+      address: string;
+      city: string;
+    } 
     token: string;
   }

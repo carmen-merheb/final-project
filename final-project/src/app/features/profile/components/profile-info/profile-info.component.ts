@@ -34,7 +34,8 @@ export class ProfileInfoComponent {
       lastName: [user.lastName, Validators.required],
       email: [user.email, [Validators.required, Validators.email]],
       phone: [user.phone, Validators.required],
-      //address: [user.address, Validators.required]
+      address: [user.address.address, Validators.required],
+      city: [user.address.city, Validators.required],
     });
   }
 
