@@ -4,3 +4,15 @@
     text-align: center;
   }
   
+  h1 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    //color: var(--primary-color, #333);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 3px solid var(--accent-color, #007bff);
+    display: inline-block;
+    padding-bottom: 8px;
+    padding-top: 30px;
+  }

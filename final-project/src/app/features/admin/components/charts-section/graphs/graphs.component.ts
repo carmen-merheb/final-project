@@ -11,7 +11,13 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./graphs.component.scss']
 })
 export class GraphsComponent {
-  view: [number, number] = [500, 300];
+  view: [number, number] = [600, 400]; // ✅ Adjust chart size for better legend spacing
+
+  legendOptions = {
+    position: 'right', // ✅ Moves the legend to the right for better space
+    title: 'Products', // ✅ Adds a title for clarity
+    width: 150 // ✅ Increases legend width to prevent text cutoff
+  };
 
   salesData = SALES_DATA.map(sale => ({
     name: sale.productName,
