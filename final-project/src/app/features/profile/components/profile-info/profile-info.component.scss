@@ -3,6 +3,7 @@
   max-width: 600px;
   margin: auto;
   background: white;
+  width: 600px;
   padding: 25px;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -30,19 +31,51 @@
     margin-top: 12px;
   }
 
-  input {
-    width: 100%;
+  input,textarea {
+    width: 97%;
+    //margin-right: 50px;
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
     transition: border 0.3s;
+    align-items: left
+    ;
 
     &:focus {
       border-color: var(--accent-color, #007bff);
       outline: none;
     }
+  }
+
+  .edit-btn {
+    background-color: #aed3fa;
+    color: black;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .edit-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  .edit-btn:active {
+    background-color: #004494;
+    transform: scale(1);
+  }
+  
+  .edit-btn:focus {
+    outline: 2px solid rgba(0, 123, 255, 0.5);
   }
 
   .btn-group {
@@ -59,17 +92,11 @@
       font-weight: bold;
     }
 
-    .edit-btn {
-      background-color: #007bff;
-      color: white;
-
-      &:hover {
-        background-color: #0056b3;
-      }
-    }
+    
+    
 
     .save-btn {
-      background-color: #28a745;
+      background-color: #74e18d;
       color: white;
 
       &:hover {
@@ -78,7 +105,7 @@
     }
 
     .cancel-btn {
-      background-color: #dc3545;
+      background-color: #de4d5c;
       color: white;
 
       &:hover {

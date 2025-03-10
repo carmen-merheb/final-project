@@ -29,6 +29,69 @@ export class OrdersService {
       ]
     },
     {
+      id: 101,
+      date: '2024-04-01',
+      total: 150.99,
+      items: [
+        { id: 1, name: 'Wireless Headphones', price: 79.99, quantity: 1 },
+        { id: 2, name: 'USB-C Charger', price: 29.99, quantity: 2 },
+      ]
+    },
+    {
+      id: 101,
+      date: '2024-04-01',
+      total: 150.99,
+      items: [
+        { id: 1, name: 'Wireless Headphones', price: 79.99, quantity: 1 },
+        { id: 2, name: 'USB-C Charger', price: 29.99, quantity: 2 },
+      ]
+    },
+    {
+      id: 101,
+      date: '2024-04-01',
+      total: 150.99,
+      items: [
+        { id: 1, name: 'Wireless Headphones', price: 79.99, quantity: 1 },
+        { id: 2, name: 'USB-C Charger', price: 29.99, quantity: 2 },
+      ]
+    },
+    {
+      id: 101,
+      date: '2024-04-01',
+      total: 150.99,
+      items: [
+        { id: 1, name: 'Wireless Headphones', price: 79.99, quantity: 1 },
+        { id: 2, name: 'USB-C Charger', price: 29.99, quantity: 2 },
+      ]
+    },
+    {
+      id: 101,
+      date: '2024-04-01',
+      total: 150.99,
+      items: [
+        { id: 1, name: 'Wireless Headphones', price: 79.99, quantity: 1 },
+        { id: 2, name: 'USB-C Charger', price: 29.99, quantity: 2 },
+      ]
+    },
+    {
+      id: 101,
+      date: '2024-04-01',
+      total: 150.99,
+      items: [
+        { id: 1, name: 'Wireless Headphones', price: 79.99, quantity: 1 },
+        { id: 2, name: 'USB-C Charger', price: 29.99, quantity: 2 },
+      ]
+    },
+    {
+      id: 101,
+      date: '2024-04-01',
+      total: 150.99,
+      items: [
+        { id: 1, name: 'Wireless Headphones', price: 79.99, quantity: 1 },
+        { id: 2, name: 'USB-C Charger', price: 29.99, quantity: 2 },
+      ]
+    },
+    {
       id: 102,
       date: '2024-03-25',
       total: 299.49,

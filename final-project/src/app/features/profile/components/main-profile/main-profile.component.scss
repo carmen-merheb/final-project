@@ -1,41 +1,48 @@
 .profile-container {
   max-width: 1000px;
   margin: auto;
-  padding: 30px;
+ // padding: 30px;
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  height: 550px;
+  height: 800px;
   margin-top: 50px;
   margin-bottom: 70px;
+  padding-left: 30px;
+  padding-top: 30px;
+  
   display: grid;
-    grid-template-columns: 200px 1fr; /* Buttons take fixed width, profile takes remaining space */
-    gap: 30px;
-    align-items: start;
+  grid-template-columns: 250px 1fr; /* Sidebar for buttons, main content */
+  grid-template-rows: auto 1fr; /* Title takes auto height, rest fills */
+  gap: 20px;
+  align-items: start;
 }
 
+/* Title should span across the entire width */
 .profile-container h1 {
   font-size: 2.2rem;
   font-weight: bold;
-  color: var(--primary-color, #333);
   margin-bottom: 20px;
+  color: var(--primary-color, #333);
   text-transform: uppercase;
   letter-spacing: 1px;
   border-bottom: 3px solid var(--accent-color, #007bff);
-  display: inline-block;
   padding-bottom: 8px;
+  text-align: center; /* Align to the left */
+  grid-column: span 2; /* Make it span across both columns */
 }
 
+/* Navigation buttons should be below the title, on the left */
 .profile-nav {
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  align-items: left; /* Center them */
-  gap: 30px;
-  margin-bottom: 25px;
-  margin-top: 60px;
+  flex-direction: column;
+  align-items: stretch; /* Stretch buttons to match container */
+  gap: 20px;
+  grid-row: 2; /* Place below title */
+  grid-column: 1; /* Keep it in the left column */
 }
 
+/* Styling for buttons */
 .profile-nav a {
   text-decoration: none;
   padding: 12px 18px;
@@ -44,25 +51,45 @@
   color: white;
   font-weight: bold;
   transition: background 0.3s, transform 0.2s;
-  width: 200px; /* Wider for button-like appearance */
+  width: 100%; /* Full width of the nav container */
   text-align: center;
-  display: block; /* Ensure full width usage */
+  //margin-top: 50px;
+  display: block;
   height: 75px;
-  justify-content:center ;
   line-height: 75px;
 }
 
+/* Main content (routed component) */
+.profile-content {
+  grid-row: 2; /* Below the title */
+  grid-column: 2; /* On the right */
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
 
-
+/* Hover effect for buttons */
 .profile-nav a:hover {
   background-color: var(--secondary-color);
   transform: translateY(-3px);
 }
 
-/* Responsive */
+/* Responsive adjustments */
 @media (max-width: 768px) {
+  .profile-container {
+    grid-template-columns: 1fr; /* Stack everything */
+    grid-template-rows: auto auto 1fr;
+  }
+
   .profile-nav {
-      flex-direction: column;
-      align-items: center;
+    grid-column: 1;
+    grid-row: 2;
+    align-items: center;
+  }
+
+  .profile-content {
+    grid-column: 1;
+    grid-row: 3;
   }
 }

@@ -1,12 +1,14 @@
 .previous-orders {
-  max-width: 700px;
-  overflow: hidden;
+  width: 600px;
+  overflow-y: auto;
   margin: auto;
   background: white;
   padding: 25px;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  max-height: 600px;
+  scroll-behavior: smooth;
 
   h2 {
     font-size: 1.8rem;
