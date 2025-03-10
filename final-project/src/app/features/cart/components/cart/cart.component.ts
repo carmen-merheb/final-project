@@ -42,14 +42,6 @@ export class CartComponent {
     this.cartService.clearCart();
   }
 
-  onOrder() {
-    if (this.cartService.countItems() == 0) {
-      alert(`Please add items to your cart!`);
-    } else {
-      this.cartService.placeOrder(this.finalPrice);
-      this.finalPrice = 0;
-    }
-  }
 
   onDec(i: number) {
     this.cartService.decQuantity(i);

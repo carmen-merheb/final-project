@@ -1,7 +1,6 @@
 import { computed, effect, Injectable, signal } from '@angular/core';
 import { ICartItem } from '../models/cart.model';
 import { Product } from '../../products-listing/models/products.model';
-import { CartApiService } from './cart-api.service';
 import { IOrder } from '../models/order.model';
 import { IUserLog } from '../models/userLog.model';
 
@@ -10,7 +9,7 @@ import { IUserLog } from '../models/userLog.model';
 })
 export class CartService {
 
-  constructor(private cartAPI: CartApiService) {
+  constructor() {
     const storedCart = localStorage.getItem('cart');
     if (storedCart) {
       this.cartItems.set(JSON.parse(storedCart));
@@ -138,47 +137,4 @@ export class CartService {
     this.cartItems.set([]);
   }
 
-  placeOrder(finalPrice: number) {
-    const products = this.cartItems().map((item) => ({
-      productId: item.product.id,
-      productQuantity: item.quantity,
-    }));
-    const user = JSON.parse(localStorage.getItem('user')!);
-    const orderModel = {
-      userId: user.userId,
-      date: new Date(),
-      items: products,
-    };
-    this.cartAPI.sendCart(orderModel).subscribe(() => {
-      this.ordered = true;
-      console.log('ordered boolean: ', this.ordered);
-    });
-
-    this.logOrder(user.userId, orderModel, finalPrice);
-    this.clearCart();
-
-    alert('Your order has been successfully sent!');
-
-    console.log(orderModel);
-  }
-
-  logOrder(userId: number, orderModel: IOrder, finalPrice: number) {
-    let orderNum: number;
-    let prevOrders: IUserLog[] = [];
-
-    if (`user#${userId} orders` in localStorage) {
-      prevOrders = JSON.parse(localStorage.getItem(`user#${userId} orders`)!);
-      orderNum = prevOrders.length + 1;
-    } else {
-      orderNum = 1;
-    }
-    let log: IUserLog = {
-      order: orderModel,
-      orderId: orderNum,
-      totalPrice: finalPrice,
-    };
-    prevOrders.push(log);
-
-    localStorage.setItem(`user#${userId} orders`, JSON.stringify(prevOrders));
-  }
 }

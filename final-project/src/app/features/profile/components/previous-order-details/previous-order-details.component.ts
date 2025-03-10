@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { OrdersService } from '../../services/orders.service';
 import { CommonModule } from '@angular/common';
+import { OrdersService } from '../../services/orders.service';
 
 @Component({
   selector: 'app-previous-order-details',
