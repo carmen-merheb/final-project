@@ -1,5 +1,6 @@
 .previous-orders {
-  width: 600px;
+  width: 90%; 
+  max-width: 600px; 
   margin: auto;
   background: white;
   padding: 25px;
@@ -57,5 +58,29 @@
         background: #f0f0f0;
       }
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .previous-orders {
+    width: 95%; 
+    padding: 15px; 
+    max-height: 500px; 
+  }
+
+  .previous-orders h2 {
+    font-size: 1.5rem; 
+  }
+
+  .order-item {
+    padding: 10px; 
+  }
+
+  .order-header {
+    font-size: 1rem;
+  }
+
+  .order-details h4 {
+    font-size: 1.1rem; 
   }
 }

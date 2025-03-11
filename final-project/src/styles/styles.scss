@@ -30,4 +30,42 @@ body {
     letter-spacing: 0.5px;
     line-height: 1.6;
   }
+
+html, body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  width: 100%;
+  overflow-x: hidden; 
+}
+
+@media (max-width: 1024px) {
+  .container {
+    width: 95%;
+  }
+
+  .flex {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%; 
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .container {
+    width: 98%;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 8px 15px;
+  }
+}
+
   

@@ -22,8 +22,9 @@
       <span class="cart-count" *ngIf="cart.countItems() > 0">
           {{ cart.countItems() }}
       </span>
-      <button class="menu-toggle"><i class="fas fa-bars"></i></button>
       </a>
+      
+      <button class="menu-toggle" (click)="toggleMenu()"><i class="fas fa-bars"></i></button>
       <a routerLink="/admin" class="admin-btn" title="Admin Dashboard">
         <i class="fas fa-tachometer-alt"></i>
       </a>

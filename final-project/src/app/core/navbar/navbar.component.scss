@@ -53,6 +53,7 @@
       text-transform: uppercase;
       color: #222;
       letter-spacing: 1px;
+      background-color: white;
     }
   }
 
@@ -88,37 +89,40 @@
   }
 }
 
-
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
     text-align: center;
     padding: 1rem;
-    width: 100vw;
-
-    .nav-left {
-      flex-direction: column;
-      width: 100%;
-
-      .nav-links {
-        display: none; 
-        flex-direction: column;
-        gap: 1rem;
-        margin-top: 1rem;
-      }
-    }
-
-    .nav-right {
-      margin-top: 1rem;
-      width: 100%;
-
-      .menu-toggle {
-        display: block;
-      }
-    }
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow-x: hidden;
   }
 
-  .nav-links.active {
-    display: flex;
+  .nav-left {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .nav-right {
+    margin-top: 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .menu-toggle {
+    display: none !important;
   }
 }
+
+
