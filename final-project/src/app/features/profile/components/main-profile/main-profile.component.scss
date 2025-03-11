@@ -10,7 +10,7 @@
   margin-bottom: 70px;
   padding-left: 30px;
   padding-top: 30px;
-  
+  padding-right: 30px;
   display: grid;
   grid-template-columns: 250px 1fr; 
   grid-template-rows: auto 1fr; 
@@ -26,9 +26,11 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   border-bottom: 3px solid var(--accent-color, #007bff);
+ // margin-right: 40px;
   padding-bottom: 8px;
   text-align: center; 
   grid-column: span 2;
+
 }
 
 .profile-nav {
