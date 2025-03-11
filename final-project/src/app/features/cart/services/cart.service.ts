@@ -66,15 +66,15 @@ export class CartService {
   }
   
   removeItem(productId: number) {
-    console.log("🗑️ Removing product with ID:", productId);
+    console.log("Removing product with ID:", productId);
     
     this.cartItems.update(items => {
       const newCart = items.filter(item => item.product.id !== productId);
-      console.log("📦 Updated Cart:", newCart);
-      return [...newCart]; // 🔥 Force Signal Update
+      console.log("Updated Cart:", newCart);
+      return [...newCart]; 
     });
 
-    console.log("✅ Cart successfully updated!");
+    console.log("Cart successfully updated!");
   }
 
   checkStock(index: number) {

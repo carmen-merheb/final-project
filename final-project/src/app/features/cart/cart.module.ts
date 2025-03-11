@@ -27,6 +27,5 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 })
 export class CartModule {
   constructor() {
-    //console.log('loaded module cart');
   }
 }
