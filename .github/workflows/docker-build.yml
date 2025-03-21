@@ -25,7 +25,7 @@ jobs:
     - name: Build and Push Docker Image
       uses: docker/build-push-action@v4
       with:
-        context: .
-        file: ./Dockerfile
+        context: ./final-project
+        file: ./final-project/Dockerfile
         push: true
         tags: carmen888/angular-test:latest
