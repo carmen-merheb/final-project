@@ -20,7 +20,7 @@ FROM nginx:1.25-alpine
 # Copy the correct Angular build output to Nginx's HTML directory
 COPY --from=build /final-project/dist/final-project/browser /usr/share/nginx/html
 
-COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 
 # Expose port 80
